@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _rb.velocity = new Vector2(Move_X, Move_Y);
+        _rb.linearVelocity = new Vector2(Move_X, Move_Y);
     }
 
 
