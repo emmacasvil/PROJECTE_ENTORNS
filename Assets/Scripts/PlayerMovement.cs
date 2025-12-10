@@ -2,24 +2,21 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    PlayerMovement _movement;
     public float speed = 4f;
     private Rigidbody2D _rb;
+    float Move_X, Move_Y;
+    
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-       float Move_X = Input.GetAxis("Horizontal");
-       float Move_Y = Input.GetAxis("Vertical");
+       Move_X = Input.GetAxis("Horizontal") * speed;
+       Move_Y = Input.GetAxis("Vertical") * speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _rb.Velocity = new Vector3(Move_X, Move_Y) * speed;
+        _rb.velocity = new Vector2(Move_X, Move_Y);
     }
 
 
 }
-
-
-
