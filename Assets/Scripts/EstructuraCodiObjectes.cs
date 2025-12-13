@@ -1,7 +1,7 @@
 using UnityEngine;
 using System; 
 
-///AQUEST CODI ÉS UN EXEMPLE D'ESTRUCTURA, NO TOCAR (copiar i enganxar per tenir l'estructura feta okey///
+///AQUEST CODI ES UN EXEMPLE D'ESTRUCTURA, NO TOCAR (copiar i enganxar per tenir l'estructura feta okey) ///
 public class EstructuraCodiObjectes : MonoBehaviour
 {
     void OnEnable()
