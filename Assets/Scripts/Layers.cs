@@ -8,6 +8,11 @@ public class Layers : MonoBehaviour
     int normal = LayerMask.NameToLayer("NORMAL"); //7
     int utopia = LayerMask.NameToLayer("UTOPIA"); //8
 
+    void Start()
+    {
+        Debug.Log("Funciona!");
+    }
+
     void OnEnable()
     {
         GameManager.Instance.Canvi += Reaccio;
@@ -40,3 +45,5 @@ public class Layers : MonoBehaviour
             objecteUTOPIC.SetActive(true);
         }
     }
+
+}
