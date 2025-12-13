@@ -5,8 +5,8 @@ using System;
 
 public class FlowerState : MonoBehaviour
 {
-    //Crea un event;
-    public event Action<int> CanviFlor;
+    //Crea un event per avisar del canvi d'estat;
+    public event Action<FlowerState, int> CanviFlor;
 
     //Declaracio dels estats
     public const int sana = 0;
@@ -16,32 +16,60 @@ public class FlowerState : MonoBehaviour
     // Estat inicial de la flor; si es mor es destrueix l'objecte. 
     public int estatActual = sana;
 
-    //Aqui s'indica que el Game Manager sera la instancia global del joc. S'executa quan es crea l'objecte abans de l'start. 
-    public void NovaFlor()
+    // Temps abans de canviar d’estat
+    [SerializeField] private float tempsSana = 10f;
+    [SerializeField] private float tempsSeca = 5f;
+
+    private Coroutine rutinaTemps;
+
+    void Start()
     {
-        Instance = this;
+        // Quan neix, comença el compte enrere
+        rutinaTemps = StartCoroutine(ControlTemps());
     }
 
-    //Funcio per canviar d'estat. 
-    public void CanviarEstat(int nouEstat) //Es passa el valor del nou estat per parametre. 
+    IEnumerator ControlTemps()
     {
-        if (nouEstat < 0 || nouEstat > 2) //Aqui es comprova si l'estat es un dels estats establerts i en cas contrari surt de la funcio. 
-        {
-            return;
-        }
+        yield return new WaitForSeconds(tempsSana);
+        CanviarEstat(seca);
 
-        if (nouEstat == 2)
-        {
-            DestroyFlower(); 
-        }
+        yield return new WaitForSeconds(tempsSeca);
+        CanviarEstat(morta);
+    }
 
-        estatActual = nouEstat; //Canvi d'estat
-        Debug.Log("Estat canviant a: " + estatActual); //Mostra el missatge a la consola
+    public void CanviarEstat(int nouEstat)
+    {
+        if (nouEstat < 0 || nouEstat > 2) return;
+
+        estatActual = nouEstat;
+
+        // Avisar als listeners
+        CanviFlor?.Invoke(this, estatActual);
+
+        Debug.Log("Flor canviant a estat: " + estatActual);
+
+        if (estatActual == morta)
+        {
+            DestroyFlower();
+        }
+    }
+
+    // Acció del jugador (regar, podar, etc.)
+    public void AtendreFlor()
+    {
+        if (estatActual == morta) return;
+
+        // Reiniciem el temporitzador
+        if (rutinaTemps != null)
+            StopCoroutine(rutinaTemps);
+
+        CanviarEstat(sana);
+        rutinaTemps = StartCoroutine(ControlTemps());
     }
 
     private void DestroyFlower()
     {
-        float lifetime = 3f; 
-        Destroy(gameObject, lifetime); 
+        Destroy(gameObject, 3f);
     }
+}
 }
