@@ -5,9 +5,6 @@ using System;
 
 public class FlowerState : MonoBehaviour
 {
-    //static vol dir que nomes hi ha una copia de l'objecte. Instance es una referencia global al GameManager. 
-    public static GameManager Instance;
-
     //Crea un event;
     public event Action<int> CanviFlor;
 
@@ -16,7 +13,7 @@ public class FlowerState : MonoBehaviour
     public const int seca = 1;
     public const int morta = 2;
 
-    // Estat actual de la flor; si es mor es destrueix l'objecte. 
+    // Estat inicial de la flor; si es mor es destrueix l'objecte. 
     public int estatActual = sana;
 
     //Aqui s'indica que el Game Manager sera la instancia global del joc. S'executa quan es crea l'objecte abans de l'start. 
@@ -33,8 +30,18 @@ public class FlowerState : MonoBehaviour
             return;
         }
 
+        if (nouEstat == 2)
+        {
+            DestroyFlower(); 
+        }
+
         estatActual = nouEstat; //Canvi d'estat
-        Canvi?.Invoke(estatActual); //Avisar a totes les funcions que tenen listeners
         Debug.Log("Estat canviant a: " + estatActual); //Mostra el missatge a la consola
+    }
+
+    private void DestroyFlower()
+    {
+        float lifetime = 3f; 
+        Destroy(gameObject, lifetime); 
     }
 }
