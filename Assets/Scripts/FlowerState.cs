@@ -23,14 +23,14 @@ public class FlowerState : MonoBehaviour
     private Coroutine rutinaTemps;
 
     void Start()
-    {
-        // Quan neix, comença el compte enrere
-        rutinaTemps = StartCoroutine(ControlTemps());
+    { 
+        rutinaTemps = StartCoroutine(ControlTemps()); // Quan neix, comença el compte enrere cridant la coroutine.
     }
 
+    //Aquesta funció és una coroutine, pot pausar-se i continuar després sense afectar a la resta del codi. 
     IEnumerator ControlTemps()
     {
-        yield return new WaitForSeconds(tempsSana);
+        yield return new WaitForSeconds(tempsSana); //Indica quanta estona ha d'estar parada la funció. 
         CanviarEstat(seca);
 
         yield return new WaitForSeconds(tempsSeca);
