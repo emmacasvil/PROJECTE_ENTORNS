@@ -1,6 +1,7 @@
 using UnityEngine;
-using System
+using System;
 
+///AQUEST CODI ES UN EXEMPLE D'ESTRUCTURA, NO TOCAR (copiar i enganxar per tenir l'estructura feta okey) ///
 public class Layers : MonoBehaviour
 {
     //Retorna el número intern de la capa amb el nom
@@ -40,3 +41,4 @@ public class Layers : MonoBehaviour
             objecteUTOPIC.SetActive(true);
         }
     }
+}
