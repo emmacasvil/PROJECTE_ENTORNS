@@ -1,10 +1,9 @@
 using UnityEngine;
-using system;
+using System;
 
 public class PlayerVelocity : MonoBehaviour
 {
     PlayerMovement playerMovement;
-    GameManager gameManager;
 
     // SON VALORS QUE HEM DE PROVAR, S'HAN D'AJUSTAR
     public float velocitat_DISTOPICA = 1.5f;
@@ -18,20 +17,20 @@ public class PlayerVelocity : MonoBehaviour
 
     void Update()
     {
-        switch (GameManager.estatActual)
+        switch (GameManager.Instance.estatActual)
         {
-            case gameManager.ESTAT_DISTOPIC:
-                playerMovement.speed(velocitat_DISTOPICA);
+            case GameManager.ESTAT_DISTOPIC:
+                playerMovement.speed = velocitat_DISTOPICA;
             break;
 
 
-            case gameManager.ESTAT_NORMAL:
-                playerMovement.speed(velocitat_NORMAL);
+            case GameManager.ESTAT_NORMAL:
+                playerMovement.speed = velocitat_NORMAL;
             break;
 
 
-            case gameManager.ESTAT_UTOPIC:
-                playerMovement.speed(velocitat_UTOPICA);
+            case GameManager.ESTAT_UTOPIC:
+                playerMovement.speed = velocitat_UTOPICA;
             break;
         }
     }
