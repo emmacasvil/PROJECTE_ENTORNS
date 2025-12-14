@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82381dabbcf4fa51d252f1dd76ac761521b18d02
 using UnityEngine;
 using System;
 
@@ -51,4 +54,8 @@ public class Layers : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 82381dabbcf4fa51d252f1dd76ac761521b18d02
