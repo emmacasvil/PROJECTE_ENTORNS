@@ -17,7 +17,7 @@ public class FlowerState : MonoBehaviour
     [SerializeField] private float tempsSana = 10f;
     [SerializeField] private float tempsSeca = 5f;
 
-    private Coroutine rutinaTemps;
+    private Coroutine rutinaTemps; //Guarda la coroutine que controla el temps, serveix per iniciar, aturar o reiniciar la funció. 
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class FlowerState : MonoBehaviour
         rutinaTemps = StartCoroutine(ControlTemps());
     }
 
-    IEnumerator ControlTemps()
+    IEnumerator ControlTemps() //Coroutine que permet esperar sense bloquejar el joc. Fa de temporitzador. 
     {
         yield return new WaitForSeconds(tempsSana);
         CanviarEstat(seca);
@@ -34,18 +34,18 @@ public class FlowerState : MonoBehaviour
         CanviarEstat(morta);
     }
 
-    public void CanviarEstat(int nouEstat)
+    public void CanviarEstat(int nouEstat)  //Canvia l'estat de la flor NO EL DEL JOC. 
     {
-        if (nouEstat < 0 || nouEstat > 2) return;
+        if (nouEstat < 0 || nouEstat > 2) return; //Evita estats inexistents
 
-        estatActual = nouEstat;
+        estatActual = nouEstat; //Actualitza l'estat de la flor. 
 
         // Avisar als listeners
         CanviFlor?.Invoke(this, estatActual);
 
         Debug.Log("Flor canviant a estat: " + estatActual);
 
-        if (estatActual == morta)
+        if (estatActual == morta) //Si la flor està morta, s'autodestrueix. 
         {
             DestroyFlower();
         }
@@ -64,6 +64,7 @@ public class FlowerState : MonoBehaviour
         rutinaTemps = StartCoroutine(ControlTemps());
     }
 
+    //Destructor
     private void DestroyFlower()
     {
         Destroy(gameObject, 3f);
