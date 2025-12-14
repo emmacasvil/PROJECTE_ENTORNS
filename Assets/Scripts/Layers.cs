@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System;
 
@@ -51,5 +50,11 @@ public class Layers : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
   }
 }
+=======
+
+}
+
+>>>>>>> 2b026673085d724658c97534f1de1539445c1a75
