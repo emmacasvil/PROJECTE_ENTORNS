@@ -1,4 +1,5 @@
 using UnityEngine;
+using system;
 
 public class PlayerVelocity : MonoBehaviour
 {
@@ -21,15 +22,17 @@ public class PlayerVelocity : MonoBehaviour
         {
             case gameManager.ESTAT_DISTOPIC:
                 playerMovement.speed(velocitat_DISTOPICA);
-                break;
+            break;
+
 
             case gameManager.ESTAT_NORMAL:
                 playerMovement.speed(velocitat_NORMAL);
-                break;
+            break;
+
 
             case gameManager.ESTAT_UTOPIC:
                 playerMovement.speed(velocitat_UTOPICA);
-                break;
+            break;
         }
     }
 }

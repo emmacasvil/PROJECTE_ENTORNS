@@ -49,12 +49,4 @@ public class Layers : MonoBehaviour
             UTOPIC.SetActive(true);
         }
     }
-
-<<<<<<< HEAD
-  }
 }
-=======
-
-}
-
->>>>>>> 2b026673085d724658c97534f1de1539445c1a75

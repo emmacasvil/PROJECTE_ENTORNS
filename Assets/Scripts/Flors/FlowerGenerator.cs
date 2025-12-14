@@ -18,7 +18,7 @@ public class FlowerGenerator : MonoBehaviour
     {
         if (estat == GameManager.ESTAT_DISTOPIC)
         {
-            
+           
         }
         else if (estat == GameManager.ESTAT_NORMAL)
         {

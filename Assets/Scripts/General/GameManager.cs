@@ -33,10 +33,9 @@ public class GameManager : MonoBehaviour
         {
             return; 
         }
-        
+
         estatActual = nouEstat; //Canvi d'estat
         Canvi?.Invoke(estatActual); //Avisar a totes les funcions que tenen listeners
         Debug.Log("Estat canviant a: " + estatActual); //Mostra el missatge a la consola
     }
-
 }
