@@ -1,8 +1,12 @@
 using UnityEngine;
-using System
+using System;
 
 public class Layers : MonoBehaviour
 {
+    public GameObject DISTOPIA;
+    public GameObject NORMAL;
+    public GameObject UTOPIC;
+
     //Retorna el número intern de la capa amb el nom
     int distopia = LayerMask.NameToLayer("DISTOPIA"); //6
     int normal = LayerMask.NameToLayer("NORMAL"); //7
@@ -28,21 +32,21 @@ public class Layers : MonoBehaviour
     {
         if (estat == GameManager.ESTAT_DISTOPIC)
         {
-            objecteDISTOPIA.SetActive(true);
-            objecteNORMAL.SetActive(false);
-            objecteUTOPIC.SetActive(false);
+            DISTOPIA.SetActive(true);
+            NORMAL.SetActive(false);
+            UTOPIC.SetActive(false);
         }
         else if (estat == GameManager.ESTAT_NORMAL)
         {
-            objecteDISTOPIA.SetActive(false);
-            objecteNORMAL.SetActive(true);
-            objecteUTOPIC.SetActive(false);
+            DISTOPIA.SetActive(false);
+            NORMAL.SetActive(true);
+            UTOPIC.SetActive(false);
         }
         else if (estat == GameManager.ESTAT_UTOPIC)
         {
-            objecteDISTOPIA.SetActive(false);
-            objecteNORMAL.SetActive(false);
-            objecteUTOPIC.SetActive(true);
+            DISTOPIA.SetActive(false);
+            NORMAL.SetActive(false);
+            UTOPIC.SetActive(true);
         }
     }
 
