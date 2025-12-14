@@ -54,7 +54,11 @@ public class Regadora : MonoBehaviour
         switch (GameManager.Instance.estatActual) //segons el GameManager, el temps de fer l'acció de regar canviarà:
         {
             case GameManager.ESTAT_NORMAL:
+<<<<<<< HEAD
                 return tempsNormal;
+=======
+                return tempsNormal
+>>>>>>> 651932cec0b49554c0aeeb5dd8a33605e96e1ace
            
             case GameManager.ESTAT_UTOPIC:
                 return tempsUtopic;
