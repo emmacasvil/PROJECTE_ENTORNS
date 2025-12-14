@@ -51,8 +51,5 @@ public class Layers : MonoBehaviour
         }
     }
 
-
+  }
 }
-
-}
-
