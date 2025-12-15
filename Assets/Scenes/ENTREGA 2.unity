@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 79271676}
   - component: {fileID: 79271675}
+  - component: {fileID: 79271677}
   m_Layer: 7
   m_Name: Normal
   m_TagString: Untagged
@@ -206,6 +207,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &79271677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79271674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ee0f57a6fe5c447a78781ab060bda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DISTOPIA: {fileID: 1690028679}
+  NORMAL: {fileID: 79271674}
+  UTOPIC: {fileID: 1301555918}
 --- !u!1 &92589439
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301555920}
   - component: {fileID: 1301555919}
+  - component: {fileID: 1301555921}
   m_Layer: 8
   m_Name: Utopic
   m_TagString: Untagged
@@ -907,6 +924,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301555921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301555918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ee0f57a6fe5c447a78781ab060bda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DISTOPIA: {fileID: 1690028679}
+  NORMAL: {fileID: 79271674}
+  UTOPIC: {fileID: 1301555918}
 --- !u!4 &1439902999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5016609912486979462, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
@@ -922,6 +954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690028681}
   - component: {fileID: 1690028680}
+  - component: {fileID: 1690028682}
   m_Layer: 6
   m_Name: "Dist\xF2pic"
   m_TagString: Untagged
@@ -999,6 +1032,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690028682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690028679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ee0f57a6fe5c447a78781ab060bda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DISTOPIA: {fileID: 1690028679}
+  NORMAL: {fileID: 79271674}
+  UTOPIC: {fileID: 1301555918}
 --- !u!1001 &1772914735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4033,8 +4081,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 985281380}
   - {fileID: 1690028681}
-  - {fileID: 79271676}
   - {fileID: 1301555920}
+  - {fileID: 79271676}
   - {fileID: 92589440}
   - {fileID: 746535680}
   - {fileID: 205244578}

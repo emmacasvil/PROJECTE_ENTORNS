@@ -8,13 +8,13 @@ public class Layers : MonoBehaviour
     public GameObject UTOPIC;
 
     //Retorna el número intern de la capa amb el nom
-    int distopia = LayerMask.NameToLayer("DISTOPIA"); //6
-    int normal = LayerMask.NameToLayer("NORMAL"); //7
-    int utopia = LayerMask.NameToLayer("UTOPIA"); //8
 
     void Start()
     {
         Debug.Log("Funciona!");
+        int distopia = LayerMask.NameToLayer("DISTOPIA"); //6
+        int normal = LayerMask.NameToLayer("NORMAL"); //7
+        int utopia = LayerMask.NameToLayer("UTOPIA"); //8
     }
 
     void OnEnable()
