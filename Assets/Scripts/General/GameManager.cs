@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public const int ESTAT_NORMAL = 1;
     public const int ESTAT_UTOPIC = 2;
 
-    // Estat inicial del joc, es va actualitzant durant la partida. 
     public int estatActual = ESTAT_DISTOPIC;
+
 
     //Aqui s'indica que el Game Manager sera la instancia global del joc. S'executa quan es crea l'objecte abans de l'start. 
     private void Awake()
