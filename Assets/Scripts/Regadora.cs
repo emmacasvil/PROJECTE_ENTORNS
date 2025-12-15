@@ -48,7 +48,7 @@ public class Regadora : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Raycast ha tocat: " + hit.collider.name);
+            Debug.Log("Raycast ha tocat: " + hit.collider.name); //fem un debug per veure que el Raycast hagi tocat al collider de la flor
 
             FlowerState flor = hit.collider.GetComponent<FlowerState>();
 
@@ -69,6 +69,8 @@ public class Regadora : MonoBehaviour
         yield return new WaitForSeconds(tempsReg); //sempre posarem un yield return en una corutina
 
         flor.AtendreFlor(); //LI PASSEM EL MISSATGE DE QUE LA FLOR HA ESTAT ATESA gràcies a la funció creada en el script FlowerState
+
+        asset_regadora.SetActive(false); //desactiva el asset de la regadora, ja NO es veurà per pantalla
 
         regant = false; //tornem a posar l'acció en false, ara el jugador ja podrà regar un altre cop
     }

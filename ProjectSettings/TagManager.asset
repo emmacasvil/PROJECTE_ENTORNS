@@ -15,7 +15,7 @@ TagManager:
   - NORMAL
   - UTOPIA
   - REGADORA
-  - 
+  - FLOWER
   - 
   - 
   - 
@@ -50,7 +50,7 @@ TagManager:
   - name: GameMode
     uniqueID: 4271837253
     locked: 0
-  - name: New Layer 4
+  - name: FLOWER
     uniqueID: 2043097819
     locked: 0
   m_RenderingLayers:
