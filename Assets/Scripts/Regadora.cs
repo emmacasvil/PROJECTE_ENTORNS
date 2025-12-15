@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Regadora : MonoBehaviour
 {
-    
-    [SerializeField] private float distanciaReg = 1f;
+    private int direccio = 1; // 1 = dreta, -1 = esquerra
+
+    [SerializeField] private float distanciaReg = 2.5f;
 
     //[SerializeField] ho posem perquè així poguem veure a l'inspector de Unity encara que sigui una variable privada
     [SerializeField] private float tempsDistopic = 2.5f; //quan esdistòpic la velocitat en la que es rega és més lenta
@@ -21,6 +22,13 @@ public class Regadora : MonoBehaviour
 
     void Update()
     {
+        float moveX = Input.GetAxisRaw("Horizontal");
+
+        if (moveX != 0)
+        {
+            direccio = (int)Mathf.Sign(moveX);
+        }
+
         if (Input.GetKeyDown(KeyCode.F) && !regant) //la tecla de REGAR SERÀ LA F, 
         {
             Debug.Log("S'ha premut la tecla F");
@@ -30,14 +38,21 @@ public class Regadora : MonoBehaviour
 
     void IntentarRegar()
     {
-        RaycastHit hit; 
+        Vector2 origen = transform.position;
+        Vector2 direccioRay = Vector2.right * direccio;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, distanciaReg)) //enviem un raycast perquè així sapiguem si el jugador està davant d'una flor, ja que sinó podriem regar una paret, arbre, etc . . .
-        { //hem fet que el jugador hagi d'estar relativament a prop de la flor, ja que sino regaries a distància
+        int mask = LayerMask.GetMask("FLOWER");
 
-            FlowerState flor = hit.collider.GetComponent<FlowerState>();  //llegim el collider i mirem que l'objecte sigui una flor gràcies al codi de FlowerState
+        RaycastHit2D hit = Physics2D.Raycast(origen, direccioRay, distanciaReg, mask);
 
-            if (flor != null) //Això comprova si ha tocat o no una flor, si ho ha fet comencem la corutina, sino, no fem res
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Raycast ha tocat: " + hit.collider.name);
+
+            FlowerState flor = hit.collider.GetComponent<FlowerState>();
+
+            if (flor != null)
             {
                 StartCoroutine(RegarFlor(flor));
             }

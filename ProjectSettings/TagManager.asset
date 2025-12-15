@@ -14,7 +14,7 @@ TagManager:
   - DISTOPIA
   - NORMAL
   - UTOPIA
-  - 
+  - REGADORA
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: GameMode
     uniqueID: 4271837253
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2043097819
     locked: 0
   m_RenderingLayers:
   - Default
