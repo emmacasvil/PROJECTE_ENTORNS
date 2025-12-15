@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 79271674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.24, y: 4.35, z: 0}
+  m_LocalPosition: {x: -5.29, y: 4.35, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -222,6 +222,7 @@ MonoBehaviour:
   DISTOPIA: {fileID: 1690028679}
   NORMAL: {fileID: 79271674}
   UTOPIC: {fileID: 1301555918}
+  estat: 0
 --- !u!1 &92589439
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +268,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estatActual: 2
+--- !u!1 &182693682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+  m_PrefabInstance: {fileID: 741491716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205244575
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5571209510322907249, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5571209510322907249, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
       propertyPath: m_SortingOrder
@@ -534,13 +540,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 741491719}
   m_SourcePrefab: {fileID: 100100000, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
 --- !u!4 &741491717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
   m_PrefabInstance: {fileID: 741491716}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &741491719
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182693682}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f47d53f049efe9d4aa506eb4f501b9a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &746535678
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +766,7 @@ GameObject:
   - component: {fileID: 1059087143}
   - component: {fileID: 1059087144}
   - component: {fileID: 1059087145}
+  - component: {fileID: 1059087146}
   m_Layer: 10
   m_Name: Flower
   m_TagString: Untagged
@@ -770,6 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41412ead3e770a428a49102bdf1ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 741491719}
   estatActual: 0
   tempsSana: 10
   tempsSeca: 5
@@ -836,6 +869,28 @@ MonoBehaviour:
   tempsNormal: 1.5
   tempsUtopic: 1
   asset_regadora: {fileID: 0}
+--- !u!95 &1059087146
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059087140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f47d53f049efe9d4aa506eb4f501b9a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1301555918
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +973,7 @@ Transform:
   m_GameObject: {fileID: 1301555918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.24, y: 4.35, z: 0}
+  m_LocalPosition: {x: -2.29, y: 4.35, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -939,6 +994,7 @@ MonoBehaviour:
   DISTOPIA: {fileID: 1690028679}
   NORMAL: {fileID: 79271674}
   UTOPIC: {fileID: 1301555918}
+  estat: 0
 --- !u!4 &1439902999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5016609912486979462, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
@@ -1026,7 +1082,7 @@ Transform:
   m_GameObject: {fileID: 1690028679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.24, y: 4.35, z: 0}
+  m_LocalPosition: {x: -8.29, y: 4.35, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1047,6 +1103,7 @@ MonoBehaviour:
   DISTOPIA: {fileID: 1690028679}
   NORMAL: {fileID: 79271674}
   UTOPIC: {fileID: 1301555918}
+  estat: 0
 --- !u!1001 &1772914735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1163,7 +1220,7 @@ Transform:
   m_GameObject: {fileID: 1893500202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 0.02, z: 0}
+  m_LocalPosition: {x: -0.61, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

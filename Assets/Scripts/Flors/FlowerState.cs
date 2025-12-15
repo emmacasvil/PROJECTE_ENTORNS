@@ -4,6 +4,7 @@ using System.Collections;
 
 public class FlowerState : MonoBehaviour
 {
+    public Animator animator;
     // Event: avisa quan canvia l’estat de la flor
     public event Action<FlowerState, int> CanviFlor;
 
