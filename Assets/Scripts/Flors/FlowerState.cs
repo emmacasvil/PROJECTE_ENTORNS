@@ -55,7 +55,11 @@ public class FlowerState : MonoBehaviour
     // Acció del jugador (regar, podar, etc.)
     public void AtendreFlor()
     {
-        if (estatActual == morta) return;
+        if (estatActual == morta)
+        {
+            GameManager.Instance.CanviarEstat(GameManager.ESTAT_DISTOPIC); //Canvi d'estat del joc
+            return;
+        }
 
         // Reiniciem el temporitzador
         if (rutinaTemps != null)
