@@ -17,7 +17,10 @@ public class Layers : MonoBehaviour
         int utopia = LayerMask.NameToLayer("UTOPIA"); //8
 
         // Inicialitzar l'estat actual al començar
-        Reaccio(estat);
+        if (GameManager.Instance != null)
+        {
+            Reaccio(GameManager.Instance.estatActual);
+        }
     }
 
     void OnEnable()
