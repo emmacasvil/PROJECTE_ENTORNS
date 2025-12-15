@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 1301555919}
   - component: {fileID: 1301555921}
   m_Layer: 8
-  m_Name: Utopic
+  m_Name: Distopic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 1690028680}
   - component: {fileID: 1690028682}
   m_Layer: 6
-  m_Name: "Dist\xF2pic"
+  m_Name: Utopic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
