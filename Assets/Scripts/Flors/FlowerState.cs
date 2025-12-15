@@ -61,13 +61,12 @@ public class FlowerState : MonoBehaviour
         if (rutinaTemps != null)
         {
             StopCoroutine(rutinaTemps);
-            estatActual = 2; //Estat Utopic
         }
 
         CanviarEstat(sana);
         rutinaTemps = StartCoroutine(ControlTemps());
 
-        GameManager.Instance.CanviarEstat(GameManager.ESTAT_UTOPIC); //Canvi d'estat del joc
+        GameManager.Instance.CanviarEstat(GameManager.ESTAT_NORMAL); //Canvi d'estat del joc
     }
 
     //Destructor
