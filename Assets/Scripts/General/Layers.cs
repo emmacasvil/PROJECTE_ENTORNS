@@ -7,7 +7,7 @@ public class Layers : MonoBehaviour
     public GameObject NORMAL;
     public GameObject UTOPIC;
 
-    //Retorna el número intern de la capa amb el nom
+    public int estat = GameManager.Instance.estatActual;
 
     void Start()
     {
@@ -15,21 +15,37 @@ public class Layers : MonoBehaviour
         int distopia = LayerMask.NameToLayer("DISTOPIA"); //6
         int normal = LayerMask.NameToLayer("NORMAL"); //7
         int utopia = LayerMask.NameToLayer("UTOPIA"); //8
+
+        // Inicialitzar l'estat actual al començar
+        Reaccio(estat);
     }
 
     void OnEnable()
     {
-        GameManager.Instance.Canvi += Reaccio;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.Canvi += Reaccio;
+        }
     }
 
     void OnDisable()
     {
-        GameManager.Instance.Canvi -= Reaccio;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.Canvi -= Reaccio;
+        }
     }
 
     //Aquí hi ha la lògica de capes que es mostren o no segons l'estat del joc. 
     void Reaccio(int estat)
     {
+        
+        if (DISTOPIA == null || NORMAL == null || UTOPIC == null)
+        {
+            Debug.LogWarning("Alguna referència de capa no està assignada!");
+            return;
+        }
+
         if (estat == GameManager.ESTAT_DISTOPIC)
         {
             DISTOPIA.SetActive(true);

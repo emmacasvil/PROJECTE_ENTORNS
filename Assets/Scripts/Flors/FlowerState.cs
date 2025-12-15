@@ -15,8 +15,8 @@ public class FlowerState : MonoBehaviour
     public int estatActual = sana;
 
     // Temps abans de canviar d’estat
-    [SerializeField] private float tempsSana = 10f * Time.deltaTime;
-    [SerializeField] private float tempsSeca = 5f * Time.deltaTime;
+    [SerializeField] private float tempsSana = 10f;
+    [SerializeField] private float tempsSeca = 5f;
 
     private Coroutine rutinaTemps; //Guarda la coroutine que controla el temps, serveix per iniciar, aturar o reiniciar la funció. 
 
@@ -59,7 +59,10 @@ public class FlowerState : MonoBehaviour
 
         // Reiniciem el temporitzador
         if (rutinaTemps != null)
+        {
             StopCoroutine(rutinaTemps);
+            estatActual = 2; //Estat Utopic
+        }
 
         CanviarEstat(sana);
         rutinaTemps = StartCoroutine(ControlTemps());
