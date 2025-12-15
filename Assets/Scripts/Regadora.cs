@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class Regadora : MonoBehaviour
 {
-    [Header("Configuració de reg")]
+    
     [SerializeField] private float distanciaReg = 1f;
 
     //[SerializeField] ho posem perquè així poguem veure a l'inspector de Unity encara que sigui una variable privada
     [SerializeField] private float tempsDistopic = 2.5f; //quan esdistòpic la velocitat en la que es rega és més lenta
     [SerializeField] private float tempsNormal = 1.5f;
     [SerializeField] private float tempsUtopic = 1f;//quan es utopic va una mica més ràpid
+    [SerializeField] private GameObject asset_regadora; //creo un gameobject buit perquè NO es veigui la regadora
 
     private bool regant = false; //de primeres el jugador NO està regant
+
+    void Start()
+    {
+        asset_regadora.SetActive(false); //l'asset de la regadora NO es veurà en un principi
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && !regant) //la tecla de REGAR SERÀ LA F, 
         {
+            Debug.Log("S'ha premut la tecla F");
             IntentarRegar(); //quan l'usuari prem la tecla F mirem si podem regar 
         }
     }
@@ -41,6 +47,7 @@ public class Regadora : MonoBehaviour
     IEnumerator RegarFlor(FlowerState flor)
     {
         regant = true; //quant hagi començat a regar, el jugador no podrà premer un altre cop F, així evitem Spammers
+        asset_regadora.SetActive(true);
 
         float tempsReg = ObtenirTempsSegonsEstat(); //aquí entra el GameManager, depenent de l'estat en que es troba el joc es tardarà més o menys en regar
 
