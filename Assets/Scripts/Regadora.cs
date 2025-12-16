@@ -31,7 +31,7 @@ public class Regadora : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && !regant) //la tecla de REGAR SERÀ LA F, 
         {
-            Debug.Log("S'ha premut la tecla F");
+            //  Debug.Log("S'ha premut la tecla F");
             IntentarRegar(); //quan l'usuari prem la tecla F mirem si podem regar 
         }
     }
@@ -48,7 +48,7 @@ public class Regadora : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Raycast ha tocat: " + hit.collider.name); //fem un debug per veure que el Raycast hagi tocat al collider de la flor
+          //  Debug.Log("Raycast ha tocat: " + hit.collider.name); //fem un debug per veure que el Raycast hagi tocat al collider de la flor
 
             FlowerState flor = hit.collider.GetComponent<FlowerState>();
 

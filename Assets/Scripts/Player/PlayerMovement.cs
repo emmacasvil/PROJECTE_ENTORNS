@@ -15,6 +15,6 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal"); //segons l'input del jugador es mour� en horitzontal
         float moveY = Input.GetAxis("Vertical"); //el mateix per� eb vertical
 
-        _rb.linearVelocity = new Vector2(moveX, moveY) * speed; 
+        _rb.linearVelocity = new Vector2(moveX, moveY) * speed;
     }
 }

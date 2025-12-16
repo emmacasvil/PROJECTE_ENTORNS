@@ -7,7 +7,6 @@ public class Layers : MonoBehaviour
     public GameObject NORMAL;
     public GameObject UTOPIC;
 
-    public int estat = GameManager.Instance.estatActual;
 
     void Start()
     {

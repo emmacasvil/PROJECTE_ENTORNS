@@ -58,7 +58,7 @@ public class FlowerState : MonoBehaviour
     {
         if (estatActual == morta)
         {
-            GameManager.Instance.CanviarEstat(GameManager.ESTAT_DISTOPIC); //Canvi d'estat del joc
+            Debug.Log("El jugador està intentant regar una planta morta :/");
             return;
         }
 
@@ -71,12 +71,16 @@ public class FlowerState : MonoBehaviour
         CanviarEstat(sana);
         rutinaTemps = StartCoroutine(ControlTemps());
 
-        GameManager.Instance.CanviarEstat(GameManager.ESTAT_NORMAL); //Canvi d'estat del joc
+        // Flor regada: sumem un punt a l'estat global
+        GameManager.Instance.Modifier(1f); // MODIFICADOR: incrementa l'estat global
+        Debug.Log("Flor regada: valorEstat després de +1f = " + GameManager.Instance.valorEstat);
     }
 
     //Destructor
     private void DestroyFlower()
     {
+        GameManager.Instance.Modifier(-1f);
+        Debug.Log("Flor morta automàticament: valorEstat després de -1f = " + GameManager.Instance.valorEstat);
         Destroy(gameObject, 3f);
     }
 }
