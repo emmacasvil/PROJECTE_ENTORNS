@@ -75,6 +75,18 @@ public class FlowerGenerator : MonoBehaviour
             contadorFlors--;
             florsActives.Remove(flor.gameObject); // Treu la referència de la llista d'actives
             flor.CanviFlor -= OnFlorCanvi; // Evita callbacks futurs d'aquesta flor
+
+            if (contadorFlors <= 0) //si el jugador perd totes les flors tenim un GameOver
+            {
+                GameOver();
+            }
         }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("GAME OVER :( HAS MATAT TOTES LES PLANTES!");
+
+        Time.timeScale = 0f; // para el joc
     }
 }
