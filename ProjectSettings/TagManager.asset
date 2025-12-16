@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - DISTOPIA
+  - NORMAL
+  - UTOPIA
+  - REGADORA
+  - FLOWER
   - 
   - 
   - 
@@ -38,6 +38,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3699917557
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 1
+  - name: Character
+    uniqueID: 1138887427
     locked: 0
+  - name: GameMode
+    uniqueID: 4271837253
+    locked: 0
+  - name: FLOWER
+    uniqueID: 2043097819
+    locked: 0
+  m_RenderingLayers:
+  - Default
