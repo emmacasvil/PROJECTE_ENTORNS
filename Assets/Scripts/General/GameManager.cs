@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
 
-        Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat);
+        Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
 
         Canvi?.Invoke(nouEstat);
 

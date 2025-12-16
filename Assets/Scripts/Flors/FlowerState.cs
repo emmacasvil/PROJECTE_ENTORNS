@@ -79,7 +79,7 @@ public class FlowerState : MonoBehaviour
     //Destructor
     private void DestroyFlower()
     {
-        GameManager.Instance.Modifier(-1f);
+        GameManager.Instance.Modifier(-1f); //si es mor la planta "es destrueix" i restem un punt al estat global
         Debug.Log("Flor morta automàticament: valorEstat després de -1f = " + GameManager.Instance.valorEstat);
         Destroy(gameObject, 3f);
     }
