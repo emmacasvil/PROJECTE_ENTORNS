@@ -1,5 +1,5 @@
 using UnityEngine;
-using System; 
+using System;
 
 // AQUEST CODI ES EL QUE CONTROLA ELS ESTATS GENERALS DEL JOC (UTOPIC, DISTOPIC I NORMAL) //
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public float valorEstat = 0f; //això només és una variable per indicar en quin número està el món
 
-    public int estatActual 
+    public int estatActual
     {
         get //rang de 0 a 20, sent 20 el màxim que es pot assolir
         {
@@ -44,17 +44,34 @@ public class GameManager : MonoBehaviour
         if (valorEstat < 0) valorEstat = 0; //fem això per assegurar-nos de que el joc NO arribi a números negatius
         if (valorEstat > 20) valorEstat = 20; //el mateix, el màxim és 20
 
-        CanviarEstat();
+        CanviEstat();
     }
 
     //Funcio per canviar d'estat. 
-    public void CanviarEstat()
+   /* public void CanviarEstat()
     {
         int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
 
         Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
 
         Canvi?.Invoke(nouEstat);
+
+    }*/
+
+    private int estatAnterior = -1;
+
+    void CanviEstat()
+    {
+        int nouEstat = estatActual;
+
+        if (nouEstat != estatAnterior)
+        {
+            estatAnterior = nouEstat;
+            Canvi?.Invoke(nouEstat);
+        }
+
+        Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
+
 
     }
 }
