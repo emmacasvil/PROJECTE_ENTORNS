@@ -3,6 +3,12 @@ using System;
 
 public class Particles : MonoBehaviour
 {
+
+    public ParticleSystem _ps;
+    void Start()
+    {
+        _ps = GetComponent<ParticleSystem>();
+    }
     void OnEnable()
     {
         GameManager.Instance.Canvi += Reaccio;
@@ -13,6 +19,12 @@ public class Particles : MonoBehaviour
         GameManager.Instance.Canvi -= Reaccio;
     }
 
+    void SetAmount()
+    {
+        float t = Time.time;
+        var emission = _ps.emission;
+        emission.rateOverTime = t;
+    }
     void Reaccio(int estat)
     {
         if (estat == GameManager.ESTAT_DISTOPIC)
