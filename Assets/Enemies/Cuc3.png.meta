@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6da6d40eeb7a2ea4bbc7d727e5251034
+guid: d0623fa3d55070d45a1095a75b156162
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3739957133524300147
-    second: Untitled_Artwork-1_0
+      213: -6980044268294363076
+    second: Cuc3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork-1_0
+      name: Cuc3_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 30
         y: 0
-        width: 202
-        height: 190
+        width: 430
+        height: 469
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8e881d5dc0091cc0800000000000000
-      internalID: -3739957133524300147
+      spriteID: c3820d748b6e12f90800000000000000
+      internalID: -6980044268294363076
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled_Artwork-1_0: -3739957133524300147
+      Cuc3_0: -6980044268294363076
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
