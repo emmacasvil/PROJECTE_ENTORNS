@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         CanviEstat();
     }
 
-    //Funcio per canviar d'estat. 
+    //Funcio ANTIGA
    /* public void CanviarEstat()
     {
         int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
@@ -60,14 +60,15 @@ public class GameManager : MonoBehaviour
 
     private int estatAnterior = -1;
 
+    //NOVA FUNCIÓ DE CANVI D'ESTAT -- l'he hagut de modificar perquè l'antiga no funcionava correctament --> Xènia :)
     void CanviEstat()
     {
-        int nouEstat = estatActual;
+        int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
 
-        if (nouEstat != estatAnterior)
-        {
-            estatAnterior = nouEstat;
-            Canvi?.Invoke(nouEstat);
+        if (nouEstat != estatAnterior) //aquí diem que si el nou estat és diferent faci el if, si no, no fa res.
+        { //el estatAnterior = -1 el posem perquè així ens assegurem de que el primer estat (serà 0 perquè és distòpic) si o si el façi, si li possessim EstatAnterior = 0, NO s'executaria el condicional, faria 0 != 0
+            estatAnterior = nouEstat; //actualitzem el nou estat
+            Canvi?.Invoke(nouEstat); //avisem dels canvis als objectes del món així aquests també poden canviar 
         }
 
         Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
