@@ -27,17 +27,15 @@ public class Particles : MonoBehaviour
     }
     void Reaccio(int estat)
     {
-        if (estat == GameManager.ESTAT_DISTOPIC)
-        {
-            /////
-        }
-        else if (estat == GameManager.ESTAT_NORMAL)
-        {
-            ////
-        }
-        else if (estat == GameManager.ESTAT_UTOPIC)
-        {
-            ////
+        var renderer = _ps.GetComponent<ParticleSystemRenderer>(); 
+        if (estat == GameManager.ESTAT_DISTOPIC) { 
+            renderer.material = distopicMaterial; 
+        } 
+        else if (estat == GameManager.ESTAT_NORMAL) { 
+            renderer.material = normalMaterial; 
+        } 
+        else if (estat == GameManager.ESTAT_UTOPIC) { 
+            renderer.material = utopicMaterial; 
         }
     }
 }
