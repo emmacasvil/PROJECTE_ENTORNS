@@ -3,18 +3,29 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 2f;
-    private Rigidbody2D _rb; //el player t� un rigidbody 2D enlla�at
+    private Rigidbody2D _rb;
+
+    public Animator animator;
+
+    Vector2 movement;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>(); //llegim el rigidbody
+        _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal"); //segons l'input del jugador es mour� en horitzontal
-        float moveY = Input.GetAxis("Vertical"); //el mateix per� eb vertical
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
 
-        _rb.linearVelocity = new Vector2(moveX, moveY) * speed;
+        movement = new Vector2(moveX, moveY);
+
+        animator.SetFloat("Horizontal", moveX);
+        animator.SetFloat("Vertical", moveY);
+        animator.SetFloat("Speed", movement.magnitude);
+
+        _rb.linearVelocity = movement * speed;
     }
 }
