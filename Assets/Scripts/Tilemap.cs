@@ -59,4 +59,6 @@ public class Tilemap : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
     }
+
+    //AQUEST CODI NO FUNCIONARÀ BÉ FINS QUE NO S'ARREGLI EL MODIFIER DEL GAMEMANAGER (quan es cridi hauria de canviar el color)
 }
