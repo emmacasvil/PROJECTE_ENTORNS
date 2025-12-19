@@ -8,6 +8,11 @@ public class FlowerState : MonoBehaviour
     // Event: avisa quan canvia l’estat de la flor
     public event Action<FlowerState, int> CanviFlor;
 
+    //Agafem sprites
+    public Sprite florSeca;
+    public Sprite florSana;
+    public Sprite florMorta;
+
     // Estats
     public const int sana = 0;
     public const int seca = 1;
@@ -20,11 +25,15 @@ public class FlowerState : MonoBehaviour
     [SerializeField] private float tempsSeca = 5f;
 
     private Coroutine rutinaTemps; //Guarda la coroutine que controla el temps, serveix per iniciar, aturar o reiniciar la funció. 
+    private SpriteRenderer _renderer; //Guarda el renderer de la flor
 
     void Start()
     {
         // Quan neix, comença el compte enrere
         rutinaTemps = StartCoroutine(ControlTemps());
+
+        //Agafem renderer per poder accedir els sprites
+        _renderer = GetComponent<SpriteRenderer>(); 
     }
 
     IEnumerator ControlTemps() //Coroutine que permet esperar sense bloquejar el joc. Fa de temporitzador. 
@@ -41,6 +50,20 @@ public class FlowerState : MonoBehaviour
         if (nouEstat < 0 || nouEstat > 2) return; //Evita estats inexistents
 
         estatActual = nouEstat; //Actualitza l'estat de la flor. 
+
+        //canviem l'sprite segons l'estat de la flor
+        if (estatActual == 0)
+        {
+            _renderer.sprite = florSana;
+        } 
+        else if (estatActual == 1)
+        {
+            _renderer.sprite = florSeca;
+        }
+        else if (estatActual == 2)
+        {
+            _renderer.sprite = florMorta;
+        }
 
         // Avisar als listeners
         CanviFlor?.Invoke(this, estatActual);
