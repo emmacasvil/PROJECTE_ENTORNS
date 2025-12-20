@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a63df01f30d8348987e925bff1bbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estatActual: 2
+  estatActual: 0
 --- !u!1 &182693682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 1219055016}
   - component: {fileID: 1219055015}
   - component: {fileID: 1219055014}
+  - component: {fileID: 1219055017}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -2321,8 +2322,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -5724,6 +5725,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1219055017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219055013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37936058f8227d34a8bf2571640b3da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ps: {fileID: 1219055015}
+  distopicMaterial: {fileID: 2100000, guid: 8b220902b7b26b641ad2da0060baafa8, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 24d4cda0f4aa88442932d4cde1bbb975, type: 2}
+  utopicMaterial: {fileID: 2100000, guid: cadd9548d9b858c4ab600f23db99bf44, type: 2}
 --- !u!1 &1301555918
 GameObject:
   m_ObjectHideFlags: 0
