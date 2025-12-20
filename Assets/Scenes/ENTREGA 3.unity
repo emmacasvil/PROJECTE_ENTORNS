@@ -6222,6 +6222,7 @@ GameObject:
   - component: {fileID: 1893500203}
   - component: {fileID: 1893500205}
   - component: {fileID: 1893500204}
+  - component: {fileID: 1893500206}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -6267,7 +6268,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f14b5d005a45b443ac9be9a3809cfb5, type: 2}
+  - {fileID: 2100000, guid: 3106a1a0775e76546b844bc9c3999b37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9150,6 +9151,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1893500206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893500202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79f66165890f1488a65bdfd82eb493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorDistopic: {r: 1, g: 0, b: 0, a: 1}
+  colorNormal: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+  colorUtopic: {r: 0.41037738, g: 1, b: 0.6882507, a: 1}
+  fadeDuration: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

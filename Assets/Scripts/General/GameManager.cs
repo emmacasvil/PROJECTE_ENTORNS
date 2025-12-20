@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     //Crea un event; una llista de funcions que s'executen quan hi ha un canvi. 
     public event Action<int> Canvi;
+    public event Action<float> ValorModificat;
 
     //Declaracio dels estats
     public const int ESTAT_DISTOPIC = 0;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         if (valorEstat < 0) valorEstat = 0; //fem això per assegurar-nos de que el joc NO arribi a números negatius
         if (valorEstat > 20) valorEstat = 20; //el mateix, el màxim és 20
+
+        ValorModificat?.Invoke(valorEstat);
 
         CanviEstat();
     }
