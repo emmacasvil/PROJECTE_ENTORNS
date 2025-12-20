@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     //Crea un event; una llista de funcions que s'executen quan hi ha un canvi. 
     public event Action<int> Canvi;
-    public event Action<float> ValorModificat;
+    public event Action<float> ValorModificat; //hem hagut de crear-ne un altre perquè aquesta serà per fer CANVIS GRADUALS, osigui detectarà cada increment o decrement en la variable valorEstat (+1f o -1f per exemple)
 
     //Declaracio dels estats
     public const int ESTAT_DISTOPIC = 0;
@@ -40,28 +40,17 @@ public class GameManager : MonoBehaviour
     //li sumem aquest valor al valor del estat, mirem que NO passi dels límits establerts i crida la funció CanviarEstat().
     public void Modifier(float valor) //això ens servirà per implementar que els altres objectes sumin o restin punts
     {
-        valorEstat += valor;
+        valorEstat += valor; //bàsicament ens serveix per sumar o restar, dependrà de les accions del jugador, com per exemple regar -> +1f, si és mort una planta -> -1f
 
         if (valorEstat < 0) valorEstat = 0; //fem això per assegurar-nos de que el joc NO arribi a números negatius
         if (valorEstat > 20) valorEstat = 20; //el mateix, el màxim és 20
 
-        ValorModificat?.Invoke(valorEstat);
+        ValorModificat?.Invoke(valorEstat); //aquest event és MOLT important, fa que tots els scripts subscrits com (l'àudio o el tilemap) rebin el nou valor del estat, així aquests podran anar canviant A POC A POC 
 
-        CanviEstat();
+        CanviEstat(); //cridem el canvi d'estat
     }
 
-    //Funcio ANTIGA
-   /* public void CanviarEstat()
-    {
-        int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
-
-        Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
-
-        Canvi?.Invoke(nouEstat);
-
-    }*/
-
-    private int estatAnterior = -1;
+     private int estatAnterior = -1;
 
     //NOVA FUNCIÓ DE CANVI D'ESTAT -- l'he hagut de modificar perquè l'antiga no funcionava correctament --> Xènia :)
     void CanviEstat()

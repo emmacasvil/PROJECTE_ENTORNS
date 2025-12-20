@@ -1,7 +1,11 @@
 using UnityEngine;
 using System;
 using System.Collections;
-public class SpriteColorController : MonoBehaviour
+
+//-- AQUEST SCRIPT ÉS EXACTAMENT IGUAL AL DEL TilemapColorController, mirar les explicacions en aquell script --
+
+public class SpriteColorController : MonoBehaviour //l'única diferència és que aquest script ha sigut adaptat perquè els sprites de la decoració també es canviin de color, el concepte i el funcionament és el mateix!
+
 {
     private SpriteRenderer spriteRenderer;
     private Coroutine fadeRoutine;
@@ -9,19 +13,25 @@ public class SpriteColorController : MonoBehaviour
     public Color colorDistopic = Color.red;
     public Color colorNormal = new Color(255f, 255f, 255f);
     public Color colorUtopic = Color.green;
+    
     public float fadeDuration = 0.5f;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
         GameManager.Instance.ValorModificat += OnValorModificat;
+        
         UpdateColorInstant(GameManager.Instance.valorEstat);
     }
 
     void OnValorModificat(float valor)
     {
         Color targetColor = CalculateColor(valor);
-        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+
+        if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
         fadeRoutine = StartCoroutine(FadeTo(targetColor));
     }
 
@@ -36,12 +46,14 @@ public class SpriteColorController : MonoBehaviour
     {
         Color startColor = spriteRenderer.color;
         float elapsed = 0f;
+
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
             spriteRenderer.color = Color.Lerp(startColor, target, elapsed / fadeDuration);
             yield return null;
         }
+
         spriteRenderer.color = target;
     }
 

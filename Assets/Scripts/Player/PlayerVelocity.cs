@@ -15,8 +15,8 @@ public class PlayerVelocity : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>(); // llegim el moviment del jugador
     }
 
-    void Update()
-    {
+    void Update() //fwm un switch normal
+    { //ES FARÀ UNA IMPLEMENTACIÓ EN UN FUTUR PERQUÈ SIGUI GRADUAL I NO UN CANVI SOBTAT
         switch (GameManager.Instance.estatActual)
         {
             case GameManager.ESTAT_DISTOPIC:
