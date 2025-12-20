@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Particles : MonoBehaviour
 {
     public ParticleSystem _ps;
 
-    // AFEGIT: referències als materials
-    public Material principal; 
+    // Materials per als diferents estats
+    public Material principal;
     public Material distopicMaterial;
     public Material normalMaterial;
     public Material utopicMaterial;
@@ -13,6 +13,13 @@ public class Particles : MonoBehaviour
     void Start()
     {
         _ps = GetComponent<ParticleSystem>();
+
+        principal = distopicMaterial;
+        var renderer = _ps.GetComponent<ParticleSystemRenderer>();
+        renderer.sharedMaterial = principal;
+
+        GameManager.Instance.Canvi += Reaccio;
+
         _ps.Play();
     }
 
@@ -23,28 +30,34 @@ public class Particles : MonoBehaviour
 
     void OnDisable()
     {
-        GameManager.Instance.Canvi -= Reaccio;
+        if (GameManager.Instance != null)
+            GameManager.Instance.Canvi -= Reaccio;
     }
 
     void Reaccio(int estat)
     {
+        Debug.Log("Reaccio cridada. Estat = " + estat);
+
         var renderer = _ps.GetComponent<ParticleSystemRenderer>();
 
-        if (estat == GameManager.ESTAT_DISTOPIC)
+        switch (estat)
         {
-            principal = distopicMaterial; 
-        }
-        else if (estat == GameManager.ESTAT_NORMAL)
-        {
-            principal = normalMaterial;
-        }
-        else if (estat == GameManager.ESTAT_UTOPIC)
-        {
-            principal = utopicMaterial;
+            case GameManager.ESTAT_DISTOPIC:
+                principal = distopicMaterial;
+                break;
+
+            case GameManager.ESTAT_NORMAL:
+                principal = normalMaterial;
+                break;
+
+            case GameManager.ESTAT_UTOPIC:
+                principal = utopicMaterial;
+                break;
         }
 
         renderer.sharedMaterial = principal;
-        _ps.Clear(); 
+        _ps.Clear();
         _ps.Play();
     }
+
 }
