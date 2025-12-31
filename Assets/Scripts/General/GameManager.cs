@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public const int ESTAT_NORMAL = 1;
     public const int ESTAT_UTOPIC = 2;
 
-    public float valorEstat = 0f; //això només és una variable per indicar en quin número està el món
+    public float valorEstat = 14f; //això només és una variable per indicar en quin número està el món
 
     public int estatActual
     {
@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update() //solució merda temporal perquè sembla que el game manager no està controlant el joc
+    {
+        Canvi?.Invoke(estatActual);//crida l'estat actual a cada update
     }
 
     //la funció Modifier seria algo així: li passem el valor de l'acció del jugador que ha fet perquè l'estat del món canvii,
