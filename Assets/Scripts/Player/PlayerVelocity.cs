@@ -9,16 +9,17 @@ public class PlayerVelocity : MonoBehaviour
     public float increment = 0.15f;      // +0.10f per cada valorEstat
 
     float velocitatTARGET;
-    public float velocitatCanvi = 2f;
+    public float velocitatCanvi = 2f; //aquesta velocitat no afecta directament al jugador, té a veure amb com de ràpid el Lerp canvia de la velocitat antiga a la nova
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
 
-        playerMovement.speed = velocitatBase;
+        playerMovement.speed = velocitatBase; //per evitar problemes de sobreescriure, li diem que la velocitat que es fa servir en el script del player movement sigui la velocitat inicial d'aquest script, osigui 1,5f
         velocitatTARGET = velocitatBase;
     }
 
+    //fem servir el mateix sistema que en el script de les particules:
     void OnEnable()
     {
         GameManager.Instance.ValorModificat += ReaccioGradual;
@@ -30,16 +31,18 @@ public class PlayerVelocity : MonoBehaviour
             GameManager.Instance.ValorModificat -= ReaccioGradual;
     }
 
-    void Update()
+    void Update() //per fer els canvis graduals, tan si com no hem de fer un Lerp
     {
-        playerMovement.speed =
-            Mathf.Lerp(playerMovement.speed, velocitatTARGET, Time.deltaTime * velocitatCanvi);
+        playerMovement.speed = Mathf.Lerp(playerMovement.speed, velocitatTARGET, Time.deltaTime * velocitatCanvi);
+        //el Lerp NO funciona depenent del valorEstat FUNCIONA PER FRAMES, cada frame, la speed anirà apropant-se a la velocitatTARGET (calculada a la següent funció), i ho farà amb la velocitat establerta per la varible: velocitatCanvi, un número baix (com és el nostre cas) farà el canvi suaument, un número més alt (10 per exemple) farà el canvi instantani
     }
 
-    void ReaccioGradual(float valorEstat)
-    {
-        velocitatTARGET = velocitatBase + valorEstat * increment;
+    void ReaccioGradual(float valorEstat) //aquesta funció es dispara quan el GameManager crida que hi ha hagut un canvi en el valorEstat (osigui el jugador ha fet una acicó que ha fet pujar o baixat el valor del món)
 
-        Debug.Log($"[VELOCITAT] valorEstat={valorEstat} → velocitatTARGET={velocitatTARGET}");
+    {
+        velocitatTARGET = velocitatBase + valorEstat * increment; //aquesta formula és la que es serveix per calcular quin valor li correspon
+        //per entendre-ho faig un exemple: valorEstat = 1, velocitatBase = 1.5f, velocitatTARGET = 1.5 + (1*0,15) -> 1.5 + 0,15 --> VelcotatTARGET = 1,65
+          
+        Debug.Log($"[VELOCITAT] valorEstat={valorEstat} → velocitatTARGET={velocitatTARGET}"); //fem un debug per comprovar que els canvis s'apliquin correctament
     }
 }
