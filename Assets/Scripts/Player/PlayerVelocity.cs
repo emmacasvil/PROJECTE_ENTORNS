@@ -1,37 +1,45 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System;
 
 public class PlayerVelocity : MonoBehaviour
 {
     PlayerMovement playerMovement;
 
-    // SON VALORS QUE HEM DE PROVAR, S'HAN D'AJUSTAR
-    public float velocitat_DISTOPICA = 1.5f;
-    public float velocitat_NORMAL = 2.3f;
-    public float velocitat_UTOPICA = 4f;
+    public float velocitatBase = 1.5f;   // comenÃ§a lent
+    public float increment = 0.15f;      // +0.10f per cada valorEstat
+
+    float velocitatTARGET;
+    public float velocitatCanvi = 2f;
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>(); // llegim el moviment del jugador
+        playerMovement = GetComponent<PlayerMovement>();
+
+        playerMovement.speed = velocitatBase;
+        velocitatTARGET = velocitatBase;
     }
 
-    void Update() //fwm un switch normal
-    { //ES FARÀ UNA IMPLEMENTACIÓ EN UN FUTUR PERQUÈ SIGUI GRADUAL I NO UN CANVI SOBTAT
-        switch (GameManager.Instance.estatActual)
-        {
-            case GameManager.ESTAT_DISTOPIC:
-                playerMovement.speed = velocitat_DISTOPICA;
-            break;
+    void OnEnable()
+    {
+        GameManager.Instance.ValorModificat += ReaccioGradual;
+    }
 
+    void OnDisable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.ValorModificat -= ReaccioGradual;
+    }
 
-            case GameManager.ESTAT_NORMAL:
-                playerMovement.speed = velocitat_NORMAL;
-            break;
+    void Update()
+    {
+        playerMovement.speed =
+            Mathf.Lerp(playerMovement.speed, velocitatTARGET, Time.deltaTime * velocitatCanvi);
+    }
 
+    void ReaccioGradual(float valorEstat)
+    {
+        velocitatTARGET = velocitatBase + valorEstat * increment;
 
-            case GameManager.ESTAT_UTOPIC:
-                playerMovement.speed = velocitat_UTOPICA;
-            break;
-        }
+        Debug.Log($"[VELOCITAT] valorEstat={valorEstat} â†’ velocitatTARGET={velocitatTARGET}");
     }
 }

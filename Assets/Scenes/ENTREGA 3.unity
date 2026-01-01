@@ -9096,9 +9096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4a448ce6af0da4abaab4cdf649eb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocitat_DISTOPICA: 1.5
-  velocitat_NORMAL: 2.3
-  velocitat_UTOPICA: 4
+  velocitatBase: 1
+  increment: 0.1
+  velocitatCanvi: 2
 --- !u!114 &1692774683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9172,7 +9172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1781076490}
   - component: {fileID: 1781076491}
-  - component: {fileID: 1781076492}
   - component: {fileID: 1781076493}
   m_Layer: 0
   m_Name: Bush 1 - TEAL 3 (3)
@@ -9251,22 +9250,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1781076492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781076489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc79f66165890f1488a65bdfd82eb493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorDistopic: {r: 1, g: 0, b: 0, a: 1}
-  colorNormal: {r: 1, g: 1, b: 1, a: 1}
-  colorUtopic: {r: 0, g: 1, b: 0, a: 1}
-  fadeDuration: 0.5
 --- !u!114 &1781076493
 MonoBehaviour:
   m_ObjectHideFlags: 0

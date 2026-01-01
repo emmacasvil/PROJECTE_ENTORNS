@@ -64,7 +64,5 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("EL MÓN HA CANVIAT A ESTAT: " + nouEstat + " | valorEstat: " + valorEstat); //això és per comprovar que canvii correctament l'estat
-
-
     }
 }

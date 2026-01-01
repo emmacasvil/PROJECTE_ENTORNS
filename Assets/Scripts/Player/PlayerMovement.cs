@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed;
     private Rigidbody2D _rb; //la variable de rigidbody
 
     public Animator animator; //llegirem el animator perquè es coordini amb les animacions
@@ -27,6 +27,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", moveY);
         animator.SetFloat("Speed", movement.magnitude);
 
-        _rb.linearVelocity = movement * speed; //Mou el jugador multiplicant la direcció per la velocitat. linearVelocity fa que el moviment sigui suau
+        _rb.linearVelocity = movement.normalized * speed;
     }
 }
