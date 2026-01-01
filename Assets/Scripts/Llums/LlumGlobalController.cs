@@ -5,8 +5,8 @@ using System.Collections;
 public class LlumGlobalController : MonoBehaviour
 {
     public Light2D llumGlobal;
-    public float intensitatBase = 0.5f;
-    public float increment = 0.7f;
+    public float intensitatBase = 0.4f;
+    public float increment = 0.1f;
     public float velocitatCanvi = 2f;
 
     float intensitatTarget;
