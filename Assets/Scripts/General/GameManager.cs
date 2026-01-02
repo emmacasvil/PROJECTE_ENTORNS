@@ -40,10 +40,14 @@ public class GameManager : MonoBehaviour
     //li sumem aquest valor al valor del estat, mirem que NO passi dels límits establerts i crida la funció CanviarEstat().
     public void Modifier(float valor) //això ens servirà per implementar que els altres objectes sumin o restin punts
     {
+        Debug.Log($"[GM] Modifier cridat amb valor: {valor}");
+
         valorEstat += valor; //bàsicament ens serveix per sumar o restar, dependrà de les accions del jugador, com per exemple regar -> +1f, si és mort una planta -> -1f
 
         if (valorEstat < 0) valorEstat = 0; //fem això per assegurar-nos de que el joc NO arribi a números negatius
         if (valorEstat > 20) valorEstat = 20; //el mateix, el màxim és 20
+
+        Debug.Log($"[GM] valorEstat després de clamp: {valorEstat}");
 
         ValorModificat?.Invoke(valorEstat); //aquest event és MOLT important, fa que tots els scripts subscrits com (l'àudio o el tilemap) rebin el nou valor del estat, així aquests podran anar canviant A POC A POC 
 
@@ -56,6 +60,7 @@ public class GameManager : MonoBehaviour
     void CanviEstat()
     {
         int nouEstat = estatActual; // obté l'estat actual a partir de valorEstat
+        Debug.Log($"[GM] Comprovant canvi d'estat. nouEstat = {nouEstat}, estatAnterior = {estatAnterior}");
 
         if (nouEstat != estatAnterior) //aquí diem que si el nou estat és diferent faci el if, si no, no fa res.
         { //el estatAnterior = -1 el posem perquè així ens assegurem de que el primer estat (serà 0 perquè és distòpic) si o si el façi, si li possessim EstatAnterior = 0, NO s'executaria el condicional, faria 0 != 0

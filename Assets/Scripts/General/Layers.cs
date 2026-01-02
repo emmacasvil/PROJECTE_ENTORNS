@@ -1,5 +1,4 @@
-using UnityEngine;
-using System;
+ï»¿using UnityEngine;
 
 public class Layers : MonoBehaviour
 {
@@ -7,64 +6,51 @@ public class Layers : MonoBehaviour
     public GameObject NORMAL;
     public GameObject UTOPIC;
 
-
     void Start()
     {
-        Debug.Log("Funciona!");
-        int distopia = LayerMask.NameToLayer("DISTOPIA"); //6
-        int normal = LayerMask.NameToLayer("NORMAL"); //7
-        int utopia = LayerMask.NameToLayer("UTOPIA"); //8
+        // Comprovem que les referÃ¨ncies estan assignades
+        if (DISTOPIA == null || NORMAL == null || UTOPIC == null)
+        {
+            Debug.LogError("[LAYERS] Falta assignar alguna capa al component!");
+            return;
+        }
 
-        // Inicialitzar l'estat actual al començar
+        // Ens assegurem que el GameManager existeix
         if (GameManager.Instance != null)
         {
+            // Ens subscrivim al canvi d'estat
+            GameManager.Instance.Canvi += Reaccio;
+
+            // Apliquem l'estat inicial
             Reaccio(GameManager.Instance.estatActual);
+        }
+        else
+        {
+            Debug.LogError("[LAYERS] GameManager.Instance Ã©s NULL al Start!");
         }
     }
 
     void OnEnable()
     {
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.Canvi += Reaccio;
-        }
     }
 
     void OnDisable()
     {
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.Canvi -= Reaccio;
-        }
     }
 
-    //Aquí hi ha la lògica de capes que es mostren o no segons l'estat del joc. 
+    // Rep l'estat i activa la capa corresponent
     void Reaccio(int estat)
     {
-        
-        if (DISTOPIA == null || NORMAL == null || UTOPIC == null)
-        {
-            Debug.LogWarning("Alguna referència de capa no està assignada!");
-            return;
-        }
+        Debug.Log($"[LAYERS] Reaccio rebuda: estat = {estat}");
 
-        if (estat == GameManager.ESTAT_DISTOPIC)
-        {
-            DISTOPIA.SetActive(true);
-            NORMAL.SetActive(false);
-            UTOPIC.SetActive(false);
-        }
-        else if (estat == GameManager.ESTAT_NORMAL)
-        {
-            DISTOPIA.SetActive(false);
-            NORMAL.SetActive(true);
-            UTOPIC.SetActive(false);
-        }
-        else if (estat == GameManager.ESTAT_UTOPIC)
-        {
-            DISTOPIA.SetActive(false);
-            NORMAL.SetActive(false);
-            UTOPIC.SetActive(true);
-        }
+        DISTOPIA.SetActive(estat == GameManager.ESTAT_DISTOPIC);
+        NORMAL.SetActive(estat == GameManager.ESTAT_NORMAL);
+        UTOPIC.SetActive(estat == GameManager.ESTAT_UTOPIC);
+
+        Debug.Log($"[LAYERS] Actius â†’ D:{DISTOPIA.activeSelf} N:{NORMAL.activeSelf} U:{UTOPIC.activeSelf}");
     }
 }
