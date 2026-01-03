@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Update() //solució merda temporal perquè sembla que el game manager no acaba de controlar el joc(?)
+    {
+        Canvi?.Invoke(estatActual);//crida l'estat actual a cada update
+    }
+
     //la funció Modifier seria algo així: li passem el valor de l'acció del jugador que ha fet perquè l'estat del món canvii,
     //li sumem aquest valor al valor del estat, mirem que NO passi dels límits establerts i crida la funció CanviarEstat().
     public void Modifier(float valor) //això ens servirà per implementar que els altres objectes sumin o restin punts
