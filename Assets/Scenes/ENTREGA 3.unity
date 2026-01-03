@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a63df01f30d8348987e925bff1bbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valorEstat: 20
+  valorEstat: 14
 --- !u!1 &150380062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +2695,7 @@ MonoBehaviour:
   flowerType: {fileID: 11400000, guid: 45252db1afa58ea41bc39dc1b1927830, type: 2}
   tempsSana: 10
   tempsSeca: 5
+  tempsMorta: 5
 --- !u!1 &746535678
 GameObject:
   m_ObjectHideFlags: 0
