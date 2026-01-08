@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4006660615692062708}
   - component: {fileID: 7781802903035007633}
+  - component: {fileID: 6149221716417949716}
   m_Layer: 0
   m_Name: Cuc1_0
   m_TagString: Untagged
@@ -87,3 +88,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6149221716417949716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335644282305641488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3319b573c891c94883bae751fce05af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puntSpawn: {fileID: 0}
