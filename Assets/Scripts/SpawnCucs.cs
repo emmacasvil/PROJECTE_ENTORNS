@@ -9,6 +9,8 @@ public class SpawnCucs : MonoBehaviour
     private float spawnRateActual;
     private float timer = 0f;
 
+    public GameObject enemyPrefab;
+
     void OnEnable()
     {
         GameManager.Instance.Canvi += Reaccio;
@@ -37,6 +39,7 @@ public class SpawnCucs : MonoBehaviour
     {
         Debug.Log("[Spawner] Enemy spawned!");
         // Aquí instancies l’enemic real
+        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
     }
 
     void Reaccio(int estat)
@@ -56,4 +59,5 @@ public class SpawnCucs : MonoBehaviour
 
         Debug.Log("[Spawner] Nou spawnRate = " + spawnRateActual);
     }
+
 }
