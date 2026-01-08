@@ -2163,6 +2163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519090206}
   - component: {fileID: 519090205}
+  - component: {fileID: 519090207}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -2202,6 +2203,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519090207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519090204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd19dd2649f74a3458300716681cb7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vignetteFadeDuration: 1
 --- !u!4 &544431568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5016609912486979462, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
@@ -2898,12 +2912,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985281377}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.17915297, y: 0.22998548, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1692774680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &985281381
 MonoBehaviour:
@@ -10057,6 +10071,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 237323873}
+  - {fileID: 985281380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1692774681
@@ -13596,7 +13611,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 985281380}
   - {fileID: 1690028681}
   - {fileID: 1301555920}
   - {fileID: 79271676}
