@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 
 public class PlayerVelocity : MonoBehaviour
 {
@@ -19,11 +20,23 @@ public class PlayerVelocity : MonoBehaviour
         velocitatTARGET = velocitatBase;
     }
 
-    //fem servir el mateix sistema que en el script de les particules:
     void OnEnable()
     {
+        StartCoroutine(EsperarGameManager()); //hem hagut de fer una corutina perquè aquest script s'activava abans del GameManager i llavors NO es printejaven els debug
+    }
+
+    IEnumerator EsperarGameManager() //quan s'hagi carregat el GameManager comprovarà:
+    {
+        // Espera fins que GameManager.Instance no sigui null
+        while (GameManager.Instance == null)
+        {
+            yield return null; // espera un frame
+        }
+
+        Debug.Log("[PL.VELOCITY] Subscrit correctament a ValorModificat");
         GameManager.Instance.ValorModificat += ReaccioGradual;
     }
+
 
     void OnDisable()
     {
