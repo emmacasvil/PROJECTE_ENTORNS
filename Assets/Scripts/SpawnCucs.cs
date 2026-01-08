@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class SpawnCucs : MonoBehaviour
 {
-    public float spawnRateDystopic = 0.5f;   // més ràpid
-    public float spawnRateNormal = 1.5f;     // mig
-    public float spawnRateUtopic = 3f;       // més lent
+    public float spawnRateDystopic = 3f;   // més ràpid
+    public float spawnRateNormal = 5f;     // mig
+    public float spawnRateUtopic = 10f;       // més lent
 
     private float spawnRateActual;
     private float timer = 0f;
 
     public GameObject enemyPrefab;
+    public Transform[] spawnPoints;
 
     void OnEnable()
     {
@@ -39,7 +40,8 @@ public class SpawnCucs : MonoBehaviour
     {
         Debug.Log("[Spawner] Enemy spawned!");
         // Aquí instancies l’enemic real
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        Transform punt = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)]; 
+        Instantiate(enemyPrefab, punt.position, Quaternion.identity);
     }
 
     void Reaccio(int estat)
