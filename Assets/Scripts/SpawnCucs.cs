@@ -1,23 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SpawnCucs : MonoBehaviour
 {
-    public float spawnRateDystopic = 3f;   // més ràpid
-    public float spawnRateNormal = 5f;     // mig
-    public float spawnRateUtopic = 10f;       // més lent
+    public GameObject enemyPrefab;
+    public Transform[] spawnPoints;
+
+    public float spawnRateDystopic = 0.5f;
+    public float spawnRateNormal = 1.5f;
+    public float spawnRateUtopic = 3f;
 
     private float spawnRateActual;
     private float timer = 0f;
 
-    public GameObject enemyPrefab;
-    public Transform[] spawnPoints;
-
     void OnEnable()
     {
         GameManager.Instance.Canvi += Reaccio;
-
-        // Inicialitzar segons l'estat actual
-        Reaccio(GameManager.Instance.estatActual);
+        Reaccio(GameManager.Instance.estatActual); // inicialitzar
     }
 
     void OnDisable()
@@ -38,10 +37,32 @@ public class SpawnCucs : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Debug.Log("[Spawner] Enemy spawned!");
-        // Aquí instancies l’enemic real
-        Transform punt = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)]; 
-        Instantiate(enemyPrefab, punt.position, Quaternion.identity);
+        // Buscar punts lliures
+        List<Transform> lliures = new List<Transform>();
+
+        foreach (Transform t in spawnPoints)
+        {
+            SpawnPoint sp = t.GetComponent<SpawnPoint>();
+            if (!sp.ocupat)
+                lliures.Add(t);
+        }
+
+        // Si no hi ha punts lliures, no fem spawn
+        if (lliures.Count == 0)
+            return;
+
+        // Triar un punt lliure aleatori
+        Transform punt = lliures[Random.Range(0, lliures.Count)];
+        SpawnPoint spPoint = punt.GetComponent<SpawnPoint>();
+
+        // Marcar-lo com ocupat
+        spPoint.ocupat = true;
+
+        // Instanciar enemic
+        GameObject enemic = Instantiate(enemyPrefab, punt.position, Quaternion.identity);
+
+        // Assignar el punt al cuc
+        enemic.GetComponent<Enemy>().puntSpawn = spPoint;
     }
 
     void Reaccio(int estat)
@@ -58,8 +79,5 @@ public class SpawnCucs : MonoBehaviour
         {
             spawnRateActual = spawnRateUtopic;
         }
-
-        Debug.Log("[Spawner] Nou spawnRate = " + spawnRateActual);
     }
-
 }
