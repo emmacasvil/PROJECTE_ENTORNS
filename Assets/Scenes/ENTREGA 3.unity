@@ -2153,11 +2153,7 @@ MonoBehaviour:
   colorNormal: {r: 0.8, g: 1, b: 0.5, a: 1}
   colorUtopic: {r: 0, g: 1, b: 0, a: 1}
   fadeDuration: 0.5
-<<<<<<< HEAD
---- !u!1 &519090204
-=======
 --- !u!1 &542046590
->>>>>>> emma2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2165,62 +2161,21 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 519090206}
-  - component: {fileID: 519090205}
-  - component: {fileID: 519090207}
-  m_Layer: 0
-  m_Name: Global Volume
-=======
   - component: {fileID: 542046592}
   - component: {fileID: 542046593}
   m_Layer: 0
   m_Name: EnemySpawner_3
->>>>>>> emma2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &519090205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519090204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 644e19447ee55a046bd5645cf45b935a, type: 2}
---- !u!4 &519090206
-=======
 --- !u!4 &542046592
->>>>>>> emma2
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 519090204}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.016183887, y: -0.38165396, z: 0.017325306}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519090207
-=======
   m_GameObject: {fileID: 542046590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -2231,21 +2186,11 @@ Transform:
   m_Father: {fileID: 1094106540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &542046593
->>>>>>> emma2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 519090204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd19dd2649f74a3458300716681cb7e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vignetteFadeDuration: 1
-=======
   m_GameObject: {fileID: 542046590}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2253,7 +2198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ocupat: 0
->>>>>>> emma2
 --- !u!4 &544431568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5016609912486979462, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
@@ -13902,8 +13846,4 @@ SceneRoots:
   - {fileID: 1006586458}
   - {fileID: 1328856352}
   - {fileID: 1568971986}
-<<<<<<< HEAD
-  - {fileID: 519090206}
-=======
   - {fileID: 1094106540}
->>>>>>> emma2
