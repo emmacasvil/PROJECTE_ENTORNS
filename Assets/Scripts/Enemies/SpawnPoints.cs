@@ -2,6 +2,5 @@ using UnityEngine;
 
 public class SpawnPoints : MonoBehaviour
 {
-    public bool ocupat = false; 
-
+    public bool ocupat = false;
 }
