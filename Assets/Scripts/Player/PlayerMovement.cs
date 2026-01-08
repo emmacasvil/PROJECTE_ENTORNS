@@ -1,32 +1,105 @@
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody2D _rb; //la variable de rigidbody
+    public float speed = 3f;
+    private Rigidbody2D rb;
+    public Animator animator;
 
-    public Animator animator; //llegirem el animator perquè es coordini amb les animacions
+    // Moviment base
+    [HideInInspector] public Vector2 movement;
 
-    Vector2 movement;
+    // Estat actual del món
+    private int estatActual = GameManager.ESTAT_NORMAL;
+
+    // Turbo
+    public float turboForce = 6f;
+    public float turboDuration = 0.10f;
+    private bool isTurbo = false;
+    private float turboTimer = 0f;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>(); //llegim el rigidbody i el animator de l'escena de unity
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        // Subscriure'ns al GameManager
+        GameManager.Instance.Canvi += OnEstatCanviat;
+    }
+
+    void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.Canvi -= OnEstatCanviat;
+    }
+
+    void OnEstatCanviat(int nouEstat)
+    {
+        estatActual = nouEstat;
     }
 
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal"); //fletxes esquerra/dreta
-        float moveY = Input.GetAxis("Vertical"); //fletxes amunt/avall
-        //aquestes variables retornen valors entre 1 i -1, que ens servirà per ajustar valors amb les animacions (visualitzar animator)
+        // Llegim input cru (sense smoothing)
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        movement = new Vector2(moveX, moveY); //generem un nou vector que és la direcció cap a on es vol moure el jugador
+        // --- APLICAR FÍSIQUES SEGONS ESTAT ---
+        switch (estatActual)
+        {
+            case GameManager.ESTAT_DISTOPIC:
+                moveX = -moveX;
+                moveY = -moveY;
+                break;
 
+            case GameManager.ESTAT_NORMAL:
+                // controls normals
+                break;
+
+            case GameManager.ESTAT_UTOPIC:
+                // controls normals + turbo amb espai
+                if (Input.GetKeyDown(KeyCode.Space))
+                    TryTurbo();
+                break;
+        }
+
+        movement = new Vector2(moveX, moveY);
+
+        // Animacions
         animator.SetFloat("Horizontal", moveX);
         animator.SetFloat("Vertical", moveY);
         animator.SetFloat("Speed", movement.magnitude);
+    }
 
-        _rb.linearVelocity = movement.normalized * speed;
+    void FixedUpdate()
+    {
+        if (isTurbo)
+        {
+            turboTimer -= Time.fixedDeltaTime;
+            if (turboTimer <= 0f)
+                isTurbo = false;
+
+            return; // mentre dura el turbo, ignorem el moviment normal
+        }
+
+        rb.linearVelocity = movement.normalized * speed;
+    }
+
+    // --- TURBO ---
+    void TryTurbo()
+    {
+        if (movement == Vector2.zero)
+            return; // no turbo si no hi ha direcció
+
+        StartTurbo(movement.normalized);
+    }
+
+    void StartTurbo(Vector2 direction)
+    {
+        isTurbo = true;
+        turboTimer = turboDuration;
+
+        rb.linearVelocity = direction * turboForce;
     }
 }
