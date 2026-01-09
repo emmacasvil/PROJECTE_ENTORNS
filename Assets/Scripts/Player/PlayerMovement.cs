@@ -62,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
 
             case GameManager.ESTAT_NORMAL:
                 // controls normals
+                moveX = moveX;
+                moveY = moveY;
                 break;
 
             case GameManager.ESTAT_UTOPIC:

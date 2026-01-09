@@ -57,7 +57,7 @@ public class Regadora : MonoBehaviour
                 StartCoroutine(RegarFlor(flor));
             }
         }
-    }
+    } 
 
     IEnumerator RegarFlor(FlowerState flor)
     {
