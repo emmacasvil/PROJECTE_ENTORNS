@@ -50,7 +50,7 @@ public class Regadora : MonoBehaviour
         {
           //  Debug.Log("Raycast ha tocat: " + hit.collider.name); //fem un debug per veure que el Raycast hagi tocat al collider de la flor
 
-            FlowerState flor = hit.collider.GetComponent<FlowerState>();
+            Flower flor = hit.collider.GetComponent<Flower>();
 
             if (flor != null)
             {
@@ -59,7 +59,7 @@ public class Regadora : MonoBehaviour
         }
     } 
 
-    IEnumerator RegarFlor(FlowerState flor)
+    IEnumerator RegarFlor(Flower flor)
     {
         regant = true; //quant hagi començat a regar, el jugador no podrà premer un altre cop F, així evitem Spammers
         asset_regadora.SetActive(true);

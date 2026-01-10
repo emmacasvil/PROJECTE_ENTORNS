@@ -2640,7 +2640,8 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2043097819
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8175445097406697150, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3124,7 +3125,7 @@ MonoBehaviour:
   tempsDistopic: 2.5
   tempsNormal: 1.5
   tempsUtopic: 1
-  asset_regadora: {fileID: 2064309631}
+  asset_regadora: {fileID: 0}
 --- !u!95 &1059087146
 Animator:
   serializedVersion: 7
@@ -13912,11 +13913,6 @@ MonoBehaviour:
   colorNormal: {r: 0.2358489, g: 0.28144577, b: 1, a: 1}
   colorUtopic: {r: 0.95208645, g: 1, b: 0, a: 1}
   velocitatCanvi: 3
---- !u!1 &2064309631 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5849844787476539603, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
-  m_PrefabInstance: {fileID: 1417800348}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
