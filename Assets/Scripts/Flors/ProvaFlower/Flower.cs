@@ -50,7 +50,7 @@ public class Flower : MonoBehaviour
 
     public void CanviarEstat(int nouEstat)
     {
-        if (nouEstat < Sana || nouEstat > Morta) return;
+        if (nouEstat < Sana || nouEstat > Gone) return;
 
         estatActual = nouEstat;
         ActualitzarVisual();

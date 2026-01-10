@@ -8,7 +8,17 @@ public class FlowerGenerator : MonoBehaviour
     [SerializeField] private int maxFlors = 15; // Nombre màxim de flors que poden existir alhora.
 
     private List<GameObject> florsActives = new List<GameObject>(); // Llista per guardar referències a les flors creades
-    private int contadorFlors = 3; // Comptador de flors vives/actives a l'inici de la partida. 
+    private int contadorFlors = 0; // Comptador de flors vives/actives a l'inici de la partida. 
+
+    private void Start()
+    {
+        contadorFlors = 0; //El comptador comença en 0
+        florsActives.Clear();
+        //Generem les tres flors inicials
+        CrearFlor();
+        CrearFlor();
+        CrearFlor();
+    }
 
     private void OnEnable()                         
     {

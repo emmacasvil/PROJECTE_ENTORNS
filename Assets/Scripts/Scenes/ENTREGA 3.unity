@@ -524,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 92589440}
   - component: {fileID: 92589441}
+  - component: {fileID: 92589442}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -559,6 +560,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorEstat: 0
+--- !u!114 &92589442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92589439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d95208ffdb47047ac4ad18e98b8187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerPrefab: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+  spawnArea: {fileID: 1893500203}
+  maxFlors: 15
 --- !u!1 &150380062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2647,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 741491719}
+    - targetCorrespondingSourceObject: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 741491722}
   m_SourcePrefab: {fileID: 100100000, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
 --- !u!4 &741491717 stripped
 Transform:
@@ -2659,6 +2678,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &741491722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182693682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ceb5fc47477c43a2ce7f3adabf745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerType: {fileID: 11400000, guid: 45252db1afa58ea41bc39dc1b1927830, type: 2}
+  tempsSana: 10
+  tempsSeca: 5
+  tempsMorta: 5
 --- !u!1 &746535678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,7 +3036,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059087141}
-  - component: {fileID: 1059087143}
   - component: {fileID: 1059087144}
   - component: {fileID: 1059087145}
   - component: {fileID: 1059087146}
@@ -3028,22 +3062,6 @@ Transform:
   - {fileID: 741491717}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059087143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059087140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41412ead3e770a428a49102bdf1ffd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 741491719}
-  estatActual: 0
-  tempsSana: 10
-  tempsSeca: 5
 --- !u!61 &1059087144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3106,7 +3124,7 @@ MonoBehaviour:
   tempsDistopic: 2.5
   tempsNormal: 1.5
   tempsUtopic: 1
-  asset_regadora: {fileID: 0}
+  asset_regadora: {fileID: 2064309631}
 --- !u!95 &1059087146
 Animator:
   serializedVersion: 7
@@ -13894,6 +13912,11 @@ MonoBehaviour:
   colorNormal: {r: 0.2358489, g: 0.28144577, b: 1, a: 1}
   colorUtopic: {r: 0.95208645, g: 1, b: 0, a: 1}
   velocitatCanvi: 3
+--- !u!1 &2064309631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5849844787476539603, guid: 878bf2c3cbfcc0743af28781317ae6d2, type: 3}
+  m_PrefabInstance: {fileID: 1417800348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
