@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class SpawnCucs : MonoBehaviour
@@ -6,80 +7,119 @@ public class SpawnCucs : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
 
-    public float spawnRateDystopic = 0.5f;
-    public float spawnRateNormal = 1.5f;
-    public float spawnRateUtopic = 3f;
+    private int maxEnemics = 14;
+    private Coroutine ajustarRoutine;
 
-    private float spawnRateActual;
-    private float timer = 0f;
-
-    void OnEnable()
+    void Start()
     {
         GameManager.Instance.Canvi += Reaccio;
-        Reaccio(GameManager.Instance.estatActual); // inicialitzar
+        GameManager.Instance.ValorModificat += ActualitzarMaxEnemics;
+
+        Reaccio(GameManager.Instance.estatActual);
+        ActualitzarMaxEnemics(GameManager.Instance.valorEstat);
+
+        SpawnInicial();
     }
+
 
     void OnDisable()
     {
         GameManager.Instance.Canvi -= Reaccio;
+        GameManager.Instance.ValorModificat -= ActualitzarMaxEnemics;
     }
 
-    void Update()
+    // SPAWN INICIAL
+    void SpawnInicial()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= spawnRateActual)
-        {
+        for (int i = 0; i < maxEnemics; i++)
             SpawnEnemy();
-            timer = 0f;
-        }
     }
 
+
+    // SPAWN D’UN ENEMIC
     void SpawnEnemy()
     {
-        // Buscar punts lliures
         List<Transform> lliures = new List<Transform>();
 
         foreach (Transform t in spawnPoints)
         {
             SpawnPoints sp = t.GetComponent<SpawnPoints>();
-            if (!sp.ocupat)
+            if (sp != null && !sp.ocupat)
                 lliures.Add(t);
         }
 
-        // Si no hi ha punts lliures, no fem spawn
         if (lliures.Count == 0)
             return;
 
-        // Triar un punt lliure aleatori
         Transform punt = lliures[Random.Range(0, lliures.Count)];
         SpawnPoints spPoint = punt.GetComponent<SpawnPoints>();
 
-        // Marcar-lo com ocupat
         spPoint.ocupat = true;
 
-        // Instanciar enemic
         GameObject enemic = Instantiate(enemyPrefab, punt.position, Quaternion.identity);
 
-        // Assignar el punt al cuc
-        enemic.GetComponent<Enemy>().puntSpawn = spPoint;
-
-        Debug.Log($"[SPAWN_CUCS] Enemic nou");
+        Enemy e = enemic.GetComponent<Enemy>();
+        e.puntSpawn = spPoint;
     }
 
+    // CANVI D’ESTAT (no afecta res, però ho mantenim)
     void Reaccio(int estat)
     {
-        if (estat == GameManager.ESTAT_DISTOPIC)
+        // No fem res aquí
+    }
+
+    // CANVI GRADUAL DEL VALOR
+    void ActualitzarMaxEnemics(float valor)
+    {
+
+        maxEnemics = Mathf.RoundToInt(Mathf.Lerp(14, 0, valor / 20f));
+        if (maxEnemics < 0) maxEnemics = 0;
+
+        Debug.Log($"[ENEMIES] Nou maxEnemics: " + maxEnemics);
+
+        AjustarEnemics();
+    }
+
+
+    // INICIA O REINICIA LA COROUTINE D’AJUST
+    void AjustarEnemics()
+    {
+        if (ajustarRoutine != null)
+            StopCoroutine(ajustarRoutine);
+
+        ajustarRoutine = StartCoroutine(AjustGradual());
+    }
+
+    // DESPAWN / SPAWN GRADUAL
+    IEnumerator AjustGradual()
+    {
+        while (true)
         {
-            spawnRateActual = spawnRateDystopic;
+            Enemy[] enemics = FindObjectsOfType<Enemy>();
+            int actuals = enemics.Length;
+            Debug.Log($"[ENEMIES] Enemics actuals: {actuals} | Max permès: {maxEnemics}");
+
+
+            // Si sobren enemics → eliminar un
+            if (actuals > maxEnemics)
+            {
+                enemics[0].Morir();
+                yield return new WaitForSeconds(0.4f);
+                continue;
+            }
+
+            // Si en falten enemics → crear un
+            if (actuals < maxEnemics)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(0.4f);
+                continue;
+            }
+
+            // Si coincideix → aturar
+            break;
         }
-        else if (estat == GameManager.ESTAT_NORMAL)
-        {
-            spawnRateActual = spawnRateNormal;
-        }
-        else if (estat == GameManager.ESTAT_UTOPIC)
-        {
-            spawnRateActual = spawnRateUtopic;
-        }
+
+        ajustarRoutine = null;
     }
 }

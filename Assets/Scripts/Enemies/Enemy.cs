@@ -1,15 +1,18 @@
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public SpawnPoints puntSpawn;
 
-    // Crida això quan el jugador mati el cuc
+    public static event Action EnemicHaMort;
+
     public void Morir()
     {
         if (puntSpawn != null)
             puntSpawn.ocupat = false;
 
+        EnemicHaMort?.Invoke();
         Destroy(gameObject);
     }
 }
