@@ -2844,6 +2844,63 @@ MonoBehaviour:
   colorNormal: {r: 0.8, g: 1, b: 0.5, a: 1}
   colorUtopic: {r: 0, g: 1, b: 0, a: 1}
   fadeDuration: 0.5
+--- !u!1001 &974124501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 541141070651033149, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_Name
+      value: Flower 5 - ORANGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2256997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1588913
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009415168383695703, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4db98f6195a8dce4cb8f031481cabe8b, type: 3}
 --- !u!1 &985281377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,6 +3097,7 @@ GameObject:
   - component: {fileID: 1059087144}
   - component: {fileID: 1059087145}
   - component: {fileID: 1059087146}
+  - component: {fileID: 1059087147}
   m_Layer: 10
   m_Name: Flower
   m_TagString: Untagged
@@ -3148,6 +3206,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1059087147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059087140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ceb5fc47477c43a2ce7f3adabf745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerType: {fileID: 11400000, guid: 45252db1afa58ea41bc39dc1b1927830, type: 2}
+  tempsSana: 10
+  tempsSeca: 5
+  tempsMorta: 5
 --- !u!1 &1061066776
 GameObject:
   m_ObjectHideFlags: 0
@@ -13933,3 +14007,4 @@ SceneRoots:
   - {fileID: 1568971986}
   - {fileID: 1094106540}
   - {fileID: 1367774269}
+  - {fileID: 974124501}
