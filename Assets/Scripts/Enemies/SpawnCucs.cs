@@ -5,33 +5,33 @@ using System.Collections.Generic;
 //la idea d'aquest script és que quane l món sigui distòpic, hi hagin molts cucs, poc a poc aniran desapareixent a mesura que el món es torna utòpic
 public class SpawnCucs : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab; //llegim a través del inspector el prefab del enemic
     public Transform[] spawnPoints;
 
-    private int maxEnemics = 14;
-    private Coroutine ajustarRoutine;
+    private int maxEnemics = 14; //hem establert que el màxim d'enemics siguin 14
+    private Coroutine ajustarRoutine; //guardem la corutina
 
     void Start()
     {
-        GameManager.Instance.Canvi += Reaccio;
+        GameManager.Instance.Canvi += Reaccio; //ens subscrivim al event GameManager  
         GameManager.Instance.ValorModificat += ActualitzarMaxEnemics;
 
-        Reaccio(GameManager.Instance.estatActual);
+        Reaccio(GameManager.Instance.estatActual); 
         ActualitzarMaxEnemics(GameManager.Instance.valorEstat);
 
-        SpawnInicial();
+        SpawnInicial(); //omplim el mapa de cucs amb aquesta funció
     }
 
 
     void OnDisable()
     {
-        GameManager.Instance.Canvi -= Reaccio;
-        GameManager.Instance.ValorModificat -= ActualitzarMaxEnemics;
+        GameManager.Instance.Canvi -= Reaccio; //quan l'objecte mor es desuscriu del event reaccio
+        GameManager.Instance.ValorModificat -= ActualitzarMaxEnemics; //s'actualitza els enemics
     }
 
     // SPAWN INICIAL
-    void SpawnInicial()
-    {
+    void SpawnInicial() //spawnegem tants cucs com permet el estatActual
+    { //exemple: maxEnemics = 6 --> només spawnegen 6
         for (int i = 0; i < maxEnemics; i++)
             SpawnEnemy();
     }
@@ -40,30 +40,29 @@ public class SpawnCucs : MonoBehaviour
     // SPAWN D’UN ENEMIC
     void SpawnEnemy()
     {
-        List<Transform> lliures = new List<Transform>();
+        List<Transform> lliures = new List<Transform>(); //tota la llista del inspector de tots els spawnPoints
 
-        foreach (Transform t in spawnPoints)
+        foreach (Transform t in spawnPoints) //recorrem tots els spawnpoints
         {
-            SpawnPoints sp = t.GetComponent<SpawnPoints>();
-            if (sp != null && !sp.ocupat)
-                lliures.Add(t);
+            SpawnPoints sp = t.GetComponent<SpawnPoints>(); //llegim els spawpoints
+            if (sp != null && !sp.ocupat) //mirem si estan ocupats o no
+                lliures.Add(t); //aquesta part serveix perque els cucs no spawnegin un sobre l'altre
         }
 
-        if (lliures.Count == 0)
+        if (lliures.Count == 0) //si no hi ha lloc no spawnegem cap cuc
             return;
 
-        Transform punt = lliures[Random.Range(0, lliures.Count)];
+        Transform punt = lliures[Random.Range(0, lliures.Count)]; //triem un punt del mapa random
         SpawnPoints spPoint = punt.GetComponent<SpawnPoints>();
 
-        spPoint.ocupat = true;
+        spPoint.ocupat = true; //marquem el punt de spawn com a ocupat
 
-        GameObject enemic = Instantiate(enemyPrefab, punt.position, Quaternion.identity);
+        GameObject enemic = Instantiate(enemyPrefab, punt.position, Quaternion.identity); //instanciem el cuc, quan es mori el cuc el lloc s'alliberarà
 
         Enemy e = enemic.GetComponent<Enemy>();
         e.puntSpawn = spPoint;
     }
 
-    // CANVI D’ESTAT (no afecta res, però ho mantenim)
     void Reaccio(int estat)
     {
         // No fem res aquí
@@ -73,12 +72,12 @@ public class SpawnCucs : MonoBehaviour
     void ActualitzarMaxEnemics(float valor)
     {
 
-        maxEnemics = Mathf.RoundToInt(Mathf.Lerp(14, 0, valor / 20f));
+        maxEnemics = Mathf.RoundToInt(Mathf.Lerp(14, 0, valor / 20f)); //el lerp funciona per calcular quants cucs hi ha d'haver en cada moment, recordem que quan ValorEstat = 20, no hi haurà cap cuc
         if (maxEnemics < 0) maxEnemics = 0;
 
         Debug.Log($"[ENEMIES] Nou maxEnemics: " + maxEnemics);
 
-        AjustarEnemics();
+        AjustarEnemics(); //cada vegada que canvia el món mirem quants enemics hi han
     }
 
 
@@ -91,12 +90,12 @@ public class SpawnCucs : MonoBehaviour
         ajustarRoutine = StartCoroutine(AjustGradual());
     }
 
-    // DESPAWN / SPAWN GRADUAL
+    // DESPAWN - SPAWN GRADUAL
     IEnumerator AjustGradual()
     {
         while (true)
         {
-            Enemy[] enemics = FindObjectsOfType<Enemy>();
+            Enemy[] enemics = FindObjectsOfType<Enemy>(); //comptem quants enemics hi han en l'escena
             int actuals = enemics.Length;
             Debug.Log($"[ENEMIES] Enemics actuals: {actuals} | Max permès: {maxEnemics}");
 
@@ -104,15 +103,15 @@ public class SpawnCucs : MonoBehaviour
             // Si sobren enemics → eliminar un
             if (actuals > maxEnemics)
             {
-                enemics[0].Morir();
-                yield return new WaitForSeconds(0.4f);
-                continue;
+                enemics[0].Morir(); //matem un enemic
+                yield return new WaitForSeconds(0.4f); //esperem
+                continue; //tornem a mirar si en sobren o no
             }
 
             // Si en falten enemics → crear un
             if (actuals < maxEnemics)
             {
-                SpawnEnemy();
+                SpawnEnemy(); //generem un
                 yield return new WaitForSeconds(0.4f);
                 continue;
             }
