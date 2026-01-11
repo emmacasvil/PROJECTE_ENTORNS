@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//la idea d'aquest script és que quane l món sigui distòpic, hi hagin molts cucs, poc a poc aniran desapareixent a mesura que el món es torna utòpic
 public class SpawnCucs : MonoBehaviour
 {
     public GameObject enemyPrefab;

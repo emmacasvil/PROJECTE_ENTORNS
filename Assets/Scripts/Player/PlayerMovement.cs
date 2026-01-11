@@ -8,7 +8,7 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 3f; //aquesta és la velocitat normal del jugador
     private Rigidbody2D rb;
     public Animator animator;
 
@@ -21,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
     // Turbo
     public float turboForce = 6f; //la potència del turbo
     public float turboDuration = 0.10f; //la durada del turbo (és curta perquè no volem un boost molt gran)
-    private bool isTurbo = false; //sempre comencareme en false
-    private float turboTimer = 0f;
+    private bool isTurbo = false; //sempre comencarem en false ja que el joc comença en distòpic
+    private float turboTimer = 0f; //timer per controlar quan s'acaba el turbo
 
     void Start()
     { //llegim els components del player
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Llegim input cru (sense smoothing)
+        // Llegim input del jugador
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        movement = new Vector2(moveX, moveY);
+        movement = new Vector2(moveX, moveY); //guardem la direcció final del jugador
 
         // Animacions
         animator.SetFloat("Horizontal", moveX);
