@@ -33,7 +33,14 @@ public class GameManager : MonoBehaviour
     //Aqui s'indica que el Game Manager sera la instancia global del joc. S'executa quan es crea l'objecte abans de l'start. 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject); // opcional però recomanat
     }
 
     /*private void Update() //solució merda temporal perquè sembla que el game manager no acaba de controlar el joc(?)

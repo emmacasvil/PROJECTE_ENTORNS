@@ -14,8 +14,7 @@ public class FlowerGenerator : MonoBehaviour
     {
         contadorFlors = 0; //El comptador comença en 0
         florsActives.Clear();
-        //Generem les tres flors inicials
-        CrearFlor();
+        //Generem les dues flors inicials
         CrearFlor();
         CrearFlor();
     }
