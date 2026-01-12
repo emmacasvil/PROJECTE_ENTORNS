@@ -17,6 +17,7 @@ public class FlowerGenerator : MonoBehaviour
         //Generem les dues flors inicials
         CrearFlor();
         CrearFlor();
+        CrearFlor();
     }
 
     private void OnEnable()
