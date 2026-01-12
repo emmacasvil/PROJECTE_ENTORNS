@@ -20,14 +20,20 @@ public class Flower : MonoBehaviour
     [SerializeField] private float tempsSeca = 5f;
     [SerializeField] private float tempsMorta = 5f;
 
+    [Header("UtopicDance")]
+    [SerializeField] private float tempsFlip = 0.25f;
+
     private SpriteRenderer spriteRenderer;
     private Coroutine rutinaTemps;
+    private Coroutine rutinaDance;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         ActualitzarVisual();
         rutinaTemps = StartCoroutine(ControlTemps());
+
+        GameManager.Instance.Canvi += OnWorldStateChanged;
     }
 
     IEnumerator ControlTemps()
@@ -42,6 +48,15 @@ public class Flower : MonoBehaviour
         CanviarEstat(Gone);
     }
 
+    IEnumerator Dance()
+    {
+        while (true)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+            yield return new WaitForSeconds(tempsFlip);
+        }
+    }
+
     public void SetType(FlowerType type)
     {
         flowerType = type;
@@ -50,10 +65,11 @@ public class Flower : MonoBehaviour
 
     public void CanviarEstat(int nouEstat)
     {
-        if (nouEstat < Sana || nouEstat > Morta) return;
+        if (nouEstat < Sana || nouEstat > Gone) return;
 
         estatActual = nouEstat;
         ActualitzarVisual();
+        UpdateDanceState();
 
         Debug.Log($"{name} canviant a estat {estatActual}");
 
@@ -96,9 +112,44 @@ public class Flower : MonoBehaviour
         }
     }
 
+    void StartDance()
+    {
+        if (rutinaDance != null) return;
+        rutinaDance = StartCoroutine(Dance());
+    }
+
+    void StopDance()
+    {
+        if (rutinaDance != null)
+        {
+            StopCoroutine(rutinaDance);
+            rutinaDance = null;
+        }
+        spriteRenderer.flipX = false;
+    }
+
+    void OnWorldStateChanged(int nouEstat)
+    {
+        UpdateDanceState();
+    }
+
+    void UpdateDanceState()
+    {
+        bool isSana = estatActual == Sana;
+        bool isUtopic = GameManager.Instance.estatActual == GameManager.ESTAT_UTOPIC;
+
+        if (isSana && isUtopic)
+            StartDance();
+        else
+            StopDance();
+    }
+
     void DestroyFlower()
     {
         GameManager.Instance.Modifier(-1f);
         Destroy(gameObject, 3f);
+
+        if (GameManager.Instance != null)
+            GameManager.Instance.Canvi -= OnWorldStateChanged;
     }
 }
