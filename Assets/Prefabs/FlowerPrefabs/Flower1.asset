@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5de5c1e60de4d14ea0bc44659a02d23, type: 3}
+  m_Name: Flower1
+  m_EditorClassIdentifier: 
+  id: Flower1
+  sanaSprite: {fileID: 21300000, guid: eaa7ee89c667fc1459c05fc1f83ad358, type: 3}
+  secaSprite: {fileID: 21300000, guid: 8856d74aa42d9a04b88a1b987cbbffb0, type: 3}
+  mortaSprite: {fileID: 21300000, guid: 8351b8dd05248214ba2a0af5a9cd9b91, type: 3}
